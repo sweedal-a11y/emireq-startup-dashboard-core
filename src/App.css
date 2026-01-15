@@ -1,0 +1,48 @@
+/* ============================= */
+/* App Layout */
+/* ============================= */
+
+.em-app {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #ffffff;
+  transition: background-color 0.3s ease;
+
+  /* ✅ FORCE FONT */
+  font-family: 'URWGeometric', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+    'Helvetica Neue', Arial, sans-serif;
+}
+
+.em-app--dark {
+  background-color: #000000;
+}
+
+/* Dark mode text color only — DO NOT touch font */
+.em-app--dark .em-main {
+  background-color: #000000;
+  color: #f9fafb;
+
+  /* ✅ keep font consistent */
+  font-family: inherit;
+}
+
+/* ============================= */
+/* Main Content Area */
+/* ============================= */
+
+.em-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  /* ✅ ENSURE FONT CASCADES */
+  font-family: inherit;
+}
+
+.em-main--auth {
+  width: 100%;
+  margin-left: 0;
+}

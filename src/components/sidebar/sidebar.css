@@ -1,0 +1,229 @@
+/* ============================= */
+/* Base */
+/* ============================= */
+
+.em-sidebar {
+  width: 260px;
+  min-width: 260px;
+  height: 100vh;
+  background: #ffffff;
+  border-right: 1px solid #e5e7eb;
+
+  display: flex;
+  flex-direction: column;
+  padding: 24px 0;
+
+  position: sticky;
+  top: 0;
+
+  transition: width 0.28s ease;
+
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.em-sidebar--collapsed {
+  width: 80px;
+  min-width: 80px;
+}
+
+/* ============================= */
+/* Header */
+/* ============================= */
+
+.em-sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 14px;
+  margin-bottom: 28px;
+}
+
+/* LOGO WRAPPER — constrained so toggle never disappears */
+.em-sidebar-logo {
+  display: flex;
+  align-items: center;
+
+  max-width: 160px;       /* 🔑 KEY FIX */
+  overflow: hidden;
+}
+
+/* LOGO IMAGE */
+.em-sidebar-logo-img {
+  height: 36px;
+  max-width: 100%;
+  width: auto;
+
+  object-fit: contain;
+  display: block;
+}
+
+/* Collapse logo size */
+.em-sidebar--collapsed .em-sidebar-logo-img {
+  height: 28px;
+}
+
+/* TOGGLE BUTTON */
+.em-sidebar-toggle {
+  all: unset;
+
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  color: #6b7280;
+  border-radius: 6px;
+
+  flex-shrink: 0;         /* 🔑 NEVER shrink */
+
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.em-sidebar-toggle:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.em-sidebar--collapsed .em-sidebar-toggle svg {
+  transform: rotate(180deg);
+}
+
+/* ============================= */
+/* Sections */
+/* ============================= */
+
+.em-sidebar-section {
+  margin-bottom: 22px;
+  padding: 0 14px;
+}
+
+.em-sidebar-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #9ca3af;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+
+  margin-bottom: 8px;
+}
+
+.em-sidebar--collapsed .em-sidebar-title {
+  display: none;
+}
+
+/* ============================= */
+/* Nav Items */
+/* ============================= */
+
+.em-sidebar-item {
+  all: unset;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  width: 100%;
+  height: 44px;
+
+  padding: 0 16px;
+  border-radius: 12px;
+
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 400;
+  color: #111827;
+
+  transition: background-color 0.18s ease, color 0.18s ease;
+
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ICON */
+.em-sidebar-item svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+
+  color: #6b7280;
+  transition: color 0.18s ease;
+}
+
+/* HOVER */
+.em-sidebar-item:hover {
+  background: #f3f4f6;
+}
+
+.em-sidebar-item:hover svg {
+  color: #111827;
+}
+
+/* ACTIVE */
+.em-sidebar-item.active {
+  background: #facc15;
+  font-weight: 500;
+  color: #111827;
+}
+
+.em-sidebar-item.active svg {
+  color: #111827;
+}
+
+/* KEYBOARD FOCUS */
+.em-sidebar-item:focus-visible {
+  outline: 2px solid #facc15;
+  outline-offset: 2px;
+}
+
+/* DISABLED (future-safe) */
+.em-sidebar-item:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ============================= */
+/* Collapsed State */
+/* ============================= */
+
+.em-sidebar--collapsed .em-sidebar-item span {
+  display: none;
+}
+
+.em-sidebar--collapsed .em-sidebar-item {
+  justify-content: center;
+  padding: 0;
+}
+
+/* ============================= */
+/* Footer */
+/* ============================= */
+
+.em-sidebar-footer {
+  margin-top: auto;
+  padding: 24px 14px 0;
+}
+
+.em-sidebar-item--logout {
+  color: #6b7280;
+}
+
+.em-sidebar-item--logout:hover {
+  background: #facc15;
+  color: #111827;
+}
+
+.em-sidebar-item--logout:hover svg {
+  color: #111827;
+}
+
+

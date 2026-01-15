@@ -1,0 +1,64 @@
+/* Startup Overview Styles */
+.em-startup-overview {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.em-startup-overview--sidebar-collapsed {
+  width: 100%;
+}
+
+.em-startup-overview-content {
+  padding: 24px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Page Intro */
+.em-page-intro {
+  margin-bottom: 32px;
+}
+
+.em-page-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.em-page-subtitle {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Dark Mode */
+body[data-theme="dark"] .em-startup-overview {
+  background-color: #0f172a;
+  color: #f1f5f9;
+}
+
+body[data-theme="dark"] .em-page-title {
+  color: #f1f5f9;
+}
+
+body[data-theme="dark"] .em-page-subtitle {
+  color: #94a3b8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .em-startup-overview-content {
+    padding: 16px;
+  }
+  
+  .em-page-title {
+    font-size: 24px;
+  }
+  
+  .em-page-subtitle {
+    font-size: 14px;
+  }
+}

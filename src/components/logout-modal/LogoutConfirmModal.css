@@ -1,0 +1,169 @@
+.em-logout-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 24px;
+  animation: fadeIn 200ms ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.em-logout-modal-container {
+  background: #FFFFFF;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04),
+    0 0 0 1px rgba(0, 0, 0, 0.05);
+  animation: slideUp 200ms ease-out;
+  overflow: hidden;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.em-logout-modal-content {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.em-logout-modal-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.em-logout-modal-subtitle {
+  font-size: 15px;
+  color: #6B7280;
+  margin: 0;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.em-logout-modal-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 0;
+}
+
+.em-logout-btn {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 160ms ease-out;
+  white-space: nowrap;
+  min-width: 100px;
+}
+
+.em-logout-btn--cancel {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  color: #111827;
+}
+
+.em-logout-btn--cancel:hover {
+  background: #F9FAFB;
+  border-color: #D1D5DB;
+}
+
+.em-logout-btn--cancel:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.em-logout-btn--confirm {
+  background: #111827;
+  color: #FFFFFF;
+  border: none;
+}
+
+.em-logout-btn--confirm:hover {
+  background: #1F2937;
+}
+
+.em-logout-btn--confirm:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.em-logout-btn:focus-visible {
+  outline: 2px solid #3B82F6;
+  outline-offset: 2px;
+}
+
+.em-logout-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Dark mode */
+.em-app--dark .em-logout-modal-container {
+  background: #1F2937;
+}
+
+.em-app--dark .em-logout-modal-title {
+  color: #F9FAFB;
+}
+
+.em-app--dark .em-logout-modal-subtitle {
+  color: #9CA3AF;
+}
+
+.em-app--dark .em-logout-btn--cancel {
+  background: #374151;
+  border-color: #4B5563;
+  color: #F9FAFB;
+}
+
+.em-app--dark .em-logout-btn--cancel:hover {
+  background: #4B5563;
+}
+
+.em-app--dark .em-logout-btn--confirm {
+  background: #FFFFFF;
+  color: #111827;
+}
+
+.em-app--dark .em-logout-btn--confirm:hover {
+  background: #F3F4F6;
+}
+
