@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import emireqLogo from '../../assets/emireq-logo.png';
-import './Login.css';
+import './Register.css';
 
-const Login = () => {
+const Register = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
+    email: '',
     password: ''
   });
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({
     username: '',
+    email: '',
     password: ''
   });
   const [generalError, setGeneralError] = useState('');
@@ -38,9 +40,15 @@ const Login = () => {
     }
   };
 
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const validateForm = () => {
     const newErrors = {
       username: '',
+      email: '',
       password: ''
     };
     let isValid = true;
@@ -49,14 +57,26 @@ const Login = () => {
     if (!formData.username.trim()) {
       newErrors.username = 'Username is required';
       isValid = false;
+    } else if (formData.username.length < 3) {
+      newErrors.username = 'Username must be at least 3 characters';
+      isValid = false;
+    }
+
+    // Email validation
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+      isValid = false;
+    } else if (!validateEmail(formData.email)) {
+      newErrors.email = 'Please enter a valid email address';
+      isValid = false;
     }
 
     // Password validation
     if (!formData.password) {
       newErrors.password = 'Password is required';
       isValid = false;
-    } else if (formData.password.length < 6) {
-      newErrors.password = 'Password must be at least 6 characters';
+    } else if (formData.password.length < 8) {
+      newErrors.password = 'Password must be at least 8 characters';
       isValid = false;
     }
 
@@ -77,26 +97,17 @@ const Login = () => {
     
     setIsLoading(true);
     
-    // Simulate API call with validation
+    // Simulate API call
     setTimeout(() => {
       setIsLoading(false);
-      
-      // Simulate authentication check
-      // In a real app, this would be an API call
-      const validUsername = 'demo';
-      const validPassword = 'password123';
-      
-      if (formData.username === validUsername && formData.password === validPassword) {
-        navigate('/dashboard');
-      } else {
-        setGeneralError('Invalid username or password. Please try again.');
-      }
-    }, 1000);
+      // Navigate to dashboard after successful registration
+      navigate('/dashboard');
+    }, 1500);
   };
 
-  const handleSocialLogin = (provider) => {
-    console.log(`Logging in with ${provider}`);
-    // Implement social login logic here
+  const handleSocialRegister = (provider) => {
+    console.log(`Registering with ${provider}`);
+    // Implement social registration logic here
   };
 
   const GoogleIcon = () => (
@@ -114,13 +125,6 @@ const Login = () => {
     </svg>
   );
 
-  const CheckCircleIcon = () => (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="12" cy="12" r="10" stroke="#FFC727" strokeWidth="2" fill="none"/>
-      <path d="M8 12L11 15L16 9" stroke="#FFC727" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  );
-
   const TrustBadgeIcon = () => (
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M8.28086 12.9167C8.20647 12.6283 8.05615 12.3651 7.84555 12.1545C7.63494 11.9439 7.37176 11.7936 7.08336 11.7192L1.97086 10.4009C1.88364 10.3761 1.80687 10.3236 1.75221 10.2512C1.69754 10.1789 1.66797 10.0907 1.66797 10C1.66797 9.90938 1.69754 9.82118 1.75221 9.74884C1.80687 9.6765 1.88364 9.62397 1.97086 9.59921L7.08336 8.28005C7.37166 8.20572 7.63477 8.05552 7.84537 7.84508C8.05596 7.63463 8.20634 7.37162 8.28086 7.08338L9.5992 1.97088C9.6237 1.88331 9.67618 1.80616 9.74863 1.75121C9.82108 1.69625 9.90951 1.6665 10.0004 1.6665C10.0914 1.6665 10.1798 1.69625 10.2523 1.75121C10.3247 1.80616 10.3772 1.88331 10.4017 1.97088L11.7192 7.08338C11.7936 7.37177 11.9439 7.63496 12.1545 7.84556C12.3651 8.05616 12.6283 8.20648 12.9167 8.28088L18.0292 9.59838C18.1171 9.62263 18.1946 9.67505 18.2499 9.74761C18.3052 9.82017 18.3351 9.90885 18.3351 10C18.3351 10.0912 18.3052 10.1799 18.2499 10.2525C18.1946 10.325 18.1171 10.3775 18.0292 10.4017L12.9167 11.7192C12.6283 11.7936 12.3651 11.9439 12.1545 12.1545C11.9439 12.3651 11.7936 12.6283 11.7192 12.9167L10.4009 18.0292C10.3764 18.1168 10.3239 18.1939 10.2514 18.2489C10.179 18.3038 10.0905 18.3336 9.99961 18.3336C9.90868 18.3336 9.82025 18.3038 9.7478 18.2489C9.67535 18.1939 9.62287 18.1168 9.59836 18.0292L8.28086 12.9167Z" stroke="#FFC300" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round"/>
@@ -131,18 +135,36 @@ const Login = () => {
     </svg>
   );
 
+  const FundingIcon = () => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="#FFC727" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+    </svg>
+  );
+
+  const ProgressIcon = () => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M22 12C22 17.5228 17.5228 22 12 22M22 12C22 6.47715 17.5228 2 12 2M22 12H2M12 22C6.47715 22 2 17.5228 2 12M12 22C13.6569 22 15 17.5228 15 12C15 6.47715 13.6569 2 12 2M12 22C10.3431 22 9 17.5228 9 12C9 6.47715 10.3431 2 12 2M2 12C2 6.47715 6.47715 2 12 2" stroke="#FFC727" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+
+  const CertifiedIcon = () => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#FFC727" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+
   return (
-    <div className="login-container">
-      {/* Left Side - Login Form */}
-      <div className="login-left">
-        <div className="login-form-wrapper">
-          <div className="login-logo">
-            <img src={emireqLogo} alt="Emireq Logo" className="logo-image" />
+    <div className="register-container">
+      {/* Left Side - Register Form */}
+      <div className="register-left">
+        <div className="register-form-wrapper">
+          <div className="register-logo">
+            <img src={emireqLogo} alt="Emireq Logo" className="logo-image" onClick={() => navigate('/')} />
           </div>
 
-          <div className="login-content">
-            <h1 className="login-title">Welcome back</h1>
-            <p className="login-subtitle">Log in to continue your funding journey.</p>
+          <div className="register-content">
+            <h1 className="register-title">Welcome back</h1>
+            <p className="register-subtitle">Access your startup dashboard and funding journey</p>
 
             {generalError && (
               <div className="error-banner">
@@ -154,7 +176,7 @@ const Login = () => {
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="login-form">
+            <form onSubmit={handleSubmit} className="register-form">
               <div className="form-group">
                 <label htmlFor="username">Username</label>
                 <input
@@ -173,6 +195,28 @@ const Login = () => {
                       <path d="M8 4V8M8 11H8.01" stroke="#DC2626" strokeWidth="1.5" strokeLinecap="round"/>
                     </svg>
                     <span>{errors.username}</span>
+                  </div>
+                )}
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="example@gmail.com"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  className={errors.email ? 'error' : ''}
+                />
+                {errors.email && (
+                  <div className="error-message">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="8" cy="8" r="7" stroke="#DC2626" strokeWidth="1.5" fill="none"/>
+                      <path d="M8 4V8M8 11H8.01" stroke="#DC2626" strokeWidth="1.5" strokeLinecap="round"/>
+                    </svg>
+                    <span>{errors.email}</span>
                   </div>
                 )}
               </div>
@@ -201,14 +245,12 @@ const Login = () => {
                 )}
               </div>
 
-              <button type="submit" className="btn-login" disabled={isLoading}>
-                {isLoading ? 'Logging in...' : 'Log In'}
+              <button type="submit" className="btn-register" disabled={isLoading}>
+                {isLoading ? 'Registering...' : 'Register'}
               </button>
 
-              <a href="#" className="forgot-password">Forget Password</a>
-
-              <p className="register-prompt">
-                Don't have an account? <a href="/auth/register" className="register-link" onClick={(e) => { e.preventDefault(); navigate('/auth/register'); }}>Register</a>
+              <p className="login-prompt">
+                Already have an account? <a href="/auth/login" className="login-link" onClick={(e) => { e.preventDefault(); navigate('/auth/login'); }}>Log in</a>
               </p>
 
               <div className="divider">
@@ -218,7 +260,7 @@ const Login = () => {
               <button
                 type="button"
                 className="btn-social btn-google"
-                onClick={() => handleSocialLogin('google')}
+                onClick={() => handleSocialRegister('google')}
               >
                 <GoogleIcon />
                 <span>Register with Google</span>
@@ -227,7 +269,7 @@ const Login = () => {
               <button
                 type="button"
                 className="btn-social btn-linkedin"
-                onClick={() => handleSocialLogin('linkedin')}
+                onClick={() => handleSocialRegister('linkedin')}
               >
                 <LinkedInIcon />
                 <span>Register with Linkedin</span>
@@ -238,12 +280,13 @@ const Login = () => {
       </div>
 
       {/* Right Side - Branding */}
-      <div className="login-right">
-        <div className="login-right-header">
+      <div className="register-right">
+        <div className="register-right-header">
           <div className="trust-badge">
             <TrustBadgeIcon />
             <span>Trusted by 50,000+ users worldwide</span>
           </div>
+
           <div className="language-selector">
             <span>English(UK)</span>
             <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -254,8 +297,8 @@ const Login = () => {
 
         <div className="branding-content">
           <h2 className="branding-title">
-            Empowering Ethical<br />
-            Startups Worldwide
+            Build Your Startup the<br />
+            Shariah Way
           </h2>
           
           <div className="quote-icon">
@@ -265,26 +308,36 @@ const Login = () => {
           </div>
 
           <p className="branding-description">
-            Join a growing network of founders and investors driving transparent, Shariah-compliant innovation.<br />
-            Connect, raise funds, and grow your business in a platform built for integrity and impact.
+            Connect with ethical investors, secure funding, and scale your business on a platform built for Shariah compliance and transparency.
           </p>
 
           <div className="branding-features">
             <div className="feature-item">
-              <CheckCircleIcon />
-              <span>Secure Login</span>
+              <div className="feature-icon">
+                <FundingIcon />
+              </div>
+              <div className="feature-text">
+                <h3>Access to Funding</h3>
+                <p>Connect with 10,000+ verified investors</p>
+              </div>
             </div>
             <div className="feature-item">
-              <CheckCircleIcon />
-              <span>Verified Global Investors</span>
+              <div className="feature-icon">
+                <ProgressIcon />
+              </div>
+              <div className="feature-text">
+                <h3>Track Your Progress</h3>
+                <p>Real-time analytics and engagement insights</p>
+              </div>
             </div>
             <div className="feature-item">
-              <CheckCircleIcon />
-              <span>Shariah-Compliant Investment Network</span>
-            </div>
-            <div className="feature-item">
-              <CheckCircleIcon />
-              <span>Trusted by 50,000+ entrepreneurs</span>
+              <div className="feature-icon">
+                <CertifiedIcon />
+              </div>
+              <div className="feature-text">
+                <h3>Shariah Certified</h3>
+                <p>All deals verified by Islamic finance experts</p>
+              </div>
             </div>
           </div>
 
@@ -295,4 +348,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

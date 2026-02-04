@@ -9,6 +9,7 @@ import InvestorInquiriesPage from "./pages/investor/InvestorInquiriesPage";
 import FundingProgressPage from "./pages/funding/FundingProgressPage";
 import MessagesPage from "./pages/messages/MessagesPage";
 import Login from "./pages/auth/Login";
+import Register from "./pages/auth/Register";
 import DocumentsPage from "./pages/documents/DocumentsPage";
 import "./App.css";
 
@@ -132,6 +133,7 @@ function AppContent() {
           <Route path="/messages" element={<MessagesPage toggleTheme={toggleTheme} sidebarCollapsed={sidebarCollapsed} />} />
           <Route path="/documents" element={<DocumentsPage toggleTheme={toggleTheme} sidebarCollapsed={sidebarCollapsed} />} />
           <Route path="/auth/login" element={<Login />} />
+          <Route path="/auth/register" element={<Register />} />
         </Routes>
       </main>
 
