@@ -1,0 +1,549 @@
+/* OnboardingStep4 Styles - Following Step3 pattern with -step4 suffix */
+.onboarding-container-step4 {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+}
+
+/* Left Side - Branding */
+.onboarding-left-step4 {
+  flex: 1;
+  background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+  padding: 20px 50px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.onboarding-left-step4::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../../assets/step4.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.15;
+  z-index: 0;
+}
+
+.onboarding-left-step4 > * {
+  position: relative;
+  z-index: 1;
+}
+
+.onboarding-left-header-step4 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 200px;
+  margin-top: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.trust-badge-onboarding-step4 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.trust-badge-onboarding-step4:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.trust-badge-onboarding-step4 span {
+  font-size: 13px;
+  color: #FFFFFF;
+  font-weight: 500;
+}
+
+.language-selector-onboarding-step4 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.language-selector-onboarding-step4:hover {
+  opacity: 0.8;
+  transform: translateX(2px);
+}
+
+.language-selector-onboarding-step4 span {
+  font-size: 14px;
+  color: #FFFFFF;
+  font-weight: 500;
+}
+
+.onboarding-content-step4 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-top: 80px;
+}
+
+.step-badge-step4 {
+  display: inline-block;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  font-size: 12px;
+  color: #FFFFFF;
+  font-weight: 500;
+  margin-bottom: 12px;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.onboarding-title-step4 {
+  color: white;
+  font-size: 32px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.quote-icon-onboarding-step4 {
+  margin-bottom: 16px;
+}
+
+.onboarding-description-step4 {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.onboarding-features-step4 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 30px;
+}
+
+.onboarding-feature-item-step4 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 4px;
+  border-radius: 6px;
+}
+
+.onboarding-feature-item-step4:hover {
+  transform: translateX(3px);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.onboarding-feature-item-step4 svg {
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.onboarding-feature-item-step4:hover svg {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 8px rgba(255, 195, 0, 0.5));
+}
+
+.onboarding-feature-item-step4 span {
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Right Side - Form */
+.onboarding-right-step4 {
+  flex: 1.2;
+  background: #FFFFFF;
+  padding: 8px 40px 8px 40px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.onboarding-right-header-step4 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.onboarding-logo-step4 {
+  height: 36px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.onboarding-logo-step4:hover {
+  transform: scale(1.05);
+}
+
+.language-selector-right-step4 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #9CA3AF;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.language-selector-right-step4:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+.language-selector-right-step4 span {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Progress Stepper */
+.progress-stepper-step4 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0;
+  margin-top: 50px;
+  margin-bottom: 16px;
+  padding: 0;
+  width: 100%;
+}
+
+.progress-step-step4 {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  background: #E5E7EB;
+  color: #9CA3AF;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.progress-step-step4.active {
+  background: #FFC300;
+  color: #000000;
+  box-shadow: 0 4px 12px rgba(255, 195, 0, 0.3);
+}
+
+.progress-step-step4.active::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background: #FFC300;
+  border-radius: 50%;
+}
+
+.progress-step-step4.completed {
+  background: #10B981;
+  color: white;
+}
+
+.progress-line-step4 {
+  height: 2px;
+  width: 20px;
+  background: #E5E7EB;
+  flex-shrink: 0;
+}
+
+/* Form Section */
+.onboarding-form-section-step4 {
+  max-width: 100%;
+  margin: 45px 0 0 0;
+  width: 100%;
+  padding-bottom: 8px;
+}
+
+.form-header-step4 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.form-icon-step4 {
+  width: 36px;
+  height: 36px;
+  background: #000000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.form-title-step4 {
+  color: #000000;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.form-subtitle-step4 {
+  color: #6B7280;
+  font-size: 13px;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.onboarding-form-step4 {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Form Groups */
+.form-group-step4 {
+  margin-bottom: 10px;
+}
+
+.form-label-step4 {
+  display: block;
+  color: #000000;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.form-input-step4 {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #000000;
+  transition: all 0.3s ease;
+  background: #FFFFFF;
+  font-family: inherit;
+}
+
+.form-input-step4::placeholder {
+  color: #9CA3AF;
+}
+
+.form-input-step4:focus {
+  outline: none;
+  border-color: #000000;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.form-input-step4:hover {
+  border-color: #D1D5DB;
+}
+
+/* Textarea */
+.form-textarea-step4 {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #000000;
+  transition: all 0.3s ease;
+  background: #FFFFFF;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 60px;
+}
+
+.form-textarea-step4::placeholder {
+  color: #9CA3AF;
+}
+
+.form-textarea-step4:focus {
+  outline: none;
+  border-color: #000000;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.form-textarea-step4:hover {
+  border-color: #D1D5DB;
+}
+
+/* Select Dropdown */
+.form-select-step4 {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #000000;
+  transition: all 0.3s ease;
+  background: #FFFFFF;
+  font-family: inherit;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+
+.form-select-step4:focus {
+  outline: none;
+  border-color: #000000;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.form-select-step4:hover {
+  border-color: #D1D5DB;
+}
+
+.form-select-step4 option {
+  padding: 12px;
+}
+
+/* Continue Button */
+.btn-continue-step4 {
+  width: 100%;
+  padding: 10px 24px;
+  background: linear-gradient(135deg, #FFC300 0%, #FFD54F 100%);
+  color: #000000;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 12px;
+}
+
+.btn-continue-step4:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 195, 0, 0.4);
+}
+
+.btn-continue-step4:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .onboarding-left-step4,
+  .onboarding-right-step4 {
+    padding: 20px 40px;
+  }
+
+  .onboarding-title-step4 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 968px) {
+  .onboarding-container-step4 {
+    flex-direction: column;
+  }
+
+  .onboarding-left-step4,
+  .onboarding-right-step4 {
+    flex: none;
+    width: 100%;
+    height: auto;
+    padding: 24px 32px;
+  }
+
+  .onboarding-left-step4 {
+    min-height: 40vh;
+  }
+
+  .onboarding-right-step4 {
+    overflow-y: visible;
+    height: auto;
+  }
+
+  .onboarding-features-step4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .onboarding-left-step4,
+  .onboarding-right-step4 {
+    padding: 20px 24px;
+  }
+
+  .onboarding-title-step4 {
+    font-size: 24px;
+  }
+
+  .onboarding-features-step4 {
+    grid-template-columns: 1fr;
+  }
+
+  .progress-stepper-step4 {
+    gap: 4px;
+  }
+
+  .progress-step-step4 {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+
+  .progress-line-step4 {
+    width: 12px;
+  }
+
+  .form-textarea-step4 {
+    min-height: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .trust-badge-onboarding-step4 span {
+    font-size: 11px;
+  }
+
+  .onboarding-left-header-step4 {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .form-title-step4 {
+    font-size: 18px;
+  }
+
+  .progress-step-step4 {
+    width: 28px;
+    height: 28px;
+    font-size: 11px;
+  }
+
+  .progress-line-step4 {
+    width: 8px;
+  }
+}

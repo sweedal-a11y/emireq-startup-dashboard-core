@@ -11,6 +11,7 @@ const Login = () => {
   });
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [errors, setErrors] = useState({
     username: '',
     password: ''
@@ -87,11 +88,16 @@ const Login = () => {
       const validPassword = 'password123';
       
       if (formData.username === validUsername && formData.password === validPassword) {
-        navigate('/dashboard');
+        setShowSuccessModal(true);
       } else {
         setGeneralError('Invalid username or password. Please try again.');
       }
     }, 1000);
+  };
+
+  const handleContinueToDashboard = () => {
+    setShowSuccessModal(false);
+    navigate('/overview');
   };
 
   const handleSocialLogin = (provider) => {
@@ -259,8 +265,8 @@ const Login = () => {
           </h2>
           
           <div className="quote-icon">
-            <svg width="40" height="32" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M0 32V12.8Q0 5.6 3.6 1.6Q7.2-2.4 14.4-2.4V4Q10.4 4.8 8 7.6Q5.6 10.4 5.6 15.2H16V32H0ZM24 32V12.8Q24 5.6 27.6 1.6Q31.2-2.4 38.4-2.4V4Q34.4 4.8 32 7.6Q29.6 10.4 29.6 15.2H40V32H24Z" fill="rgba(255, 255, 255, 0.2)"/>
+            <svg width="25" height="20" viewBox="0 0 25 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21 0C22.0938 0 22.6406 0.21875 22.6406 0.65625C22.6406 0.84375 22.4688 1 22.125 1.125C19.25 2.28125 17.8125 4.53125 17.8125 7.875C18.25 7.8125 18.5625 7.78125 18.75 7.78125C22.5 7.78125 24.375 9.65625 24.375 13.4062C24.375 17.125 22.5 18.9844 18.75 18.9844C14.4062 18.9844 12.2344 16.5938 12.2344 11.8125C12.2344 6.65625 14.3125 2.95312 18.4688 0.703125C19.3438 0.234375 20.1875 0 21 0ZM8.76562 0.140625C9.85938 0.140625 10.4062 0.359375 10.4062 0.796875C10.4062 0.984375 10.2344 1.14062 9.89062 1.26562C7.01562 2.42188 5.57812 4.67188 5.57812 8.01562C6.01562 7.95312 6.32812 7.92188 6.51562 7.92188C10.2656 7.92188 12.1406 9.79688 12.1406 13.5469C12.1406 17.2656 10.2656 19.125 6.51562 19.125C2.17188 19.125 0 16.7344 0 11.9531C0 6.79688 2.07812 3.09375 6.23438 0.84375C7.10938 0.375 7.95312 0.140625 8.76562 0.140625Z" fill="#CBDBFC"/>
             </svg>
           </div>
 
@@ -291,6 +297,37 @@ const Login = () => {
           <div className="decorative-element"></div>
         </div>
       </div>
+
+      {/* Success Modal */}
+      {showSuccessModal && (
+        <div className="success-modal-overlay">
+          <div className="success-modal">
+            <button className="close-modal-btn" onClick={() => setShowSuccessModal(false)}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18M6 6L18 18" stroke="#9CA3AF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+            
+            <div className="success-icon">
+              <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="40" cy="40" r="40" fill="#D1FAE5"/>
+                <circle cx="40" cy="40" r="28" fill="#10B981"/>
+                <path d="M28 40L36 48L52 32" stroke="white" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+
+            <h2 className="success-title">Login Successful!</h2>
+            
+            <p className="success-message">
+              Welcome back! You're being redirected to your startup dashboard.
+            </p>
+
+            <button className="btn-continue-dashboard" onClick={handleContinueToDashboard}>
+              Continue to Dashboard
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

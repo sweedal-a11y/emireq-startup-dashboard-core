@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { BrowserRouter, Routes, Route, useNavigate, useSearchParams, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useNavigate, useSearchParams, useLocation } from "react-router-dom";
 import Sidebar from "./components/sidebar/Sidebar";
 import LogoutConfirmModal from "./components/logout-modal/LogoutConfirmModal";
 import Dashboard from "./pages/Dashboard";
@@ -10,6 +10,13 @@ import FundingProgressPage from "./pages/funding/FundingProgressPage";
 import MessagesPage from "./pages/messages/MessagesPage";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
+import OnboardingStep1 from "./pages/auth/OnboardingStep1";
+import OnboardingStep2 from "./pages/auth/OnboardingStep2";
+import OnboardingStep3 from "./pages/auth/OnboardingStep3";
+import OnboardingStep4 from "./pages/auth/OnboardingStep4";
+import OnboardingStep5 from "./pages/auth/OnboardingStep5";
+import OnboardingStep6 from "./pages/auth/OnboardingStep6";
+import OnboardingStep7 from "./pages/auth/OnboardingStep7";
 import DocumentsPage from "./pages/documents/DocumentsPage";
 import "./App.css";
 
@@ -110,7 +117,7 @@ function AppContent() {
   };
 
   // Don't show sidebar on auth pages
-  const isAuthPage = location.pathname.startsWith("/auth");
+  const isAuthPage = location.pathname.startsWith("/auth") || location.pathname.startsWith("/onboarding");
 
   return (
     <div className={`em-app ${isDarkMode ? 'em-app--dark' : ''}`}>
@@ -124,7 +131,7 @@ function AppContent() {
 
       <main className={`em-main ${sidebarCollapsed ? 'em-main--expanded' : ''} ${isAuthPage ? 'em-main--auth' : ''}`}>
         <Routes>
-          <Route path="/" element={<Dashboard isDarkMode={isDarkMode} toggleTheme={toggleTheme} sidebarCollapsed={sidebarCollapsed} />} />
+          <Route path="/" element={<Navigate to="/auth/login" replace />} />
           <Route path="/overview" element={<Dashboard isDarkMode={isDarkMode} toggleTheme={toggleTheme} sidebarCollapsed={sidebarCollapsed} />} />
           <Route path="/profile" element={<MyProfile toggleTheme={toggleTheme} />} />
           <Route path="/outreach" element={<OutreachPage isDarkMode={isDarkMode} toggleTheme={toggleTheme} />} />
@@ -134,6 +141,13 @@ function AppContent() {
           <Route path="/documents" element={<DocumentsPage toggleTheme={toggleTheme} sidebarCollapsed={sidebarCollapsed} />} />
           <Route path="/auth/login" element={<Login />} />
           <Route path="/auth/register" element={<Register />} />
+          <Route path="/onboarding/step1" element={<OnboardingStep1 />} />
+          <Route path="/onboarding/step2" element={<OnboardingStep2 />} />
+          <Route path="/onboarding/step3" element={<OnboardingStep3 />} />
+          <Route path="/onboarding/step4" element={<OnboardingStep4 />} />
+          <Route path="/onboarding/step5" element={<OnboardingStep5 />} />
+          <Route path="/onboarding/step6" element={<OnboardingStep6 />} />
+          <Route path="/onboarding/step7" element={<OnboardingStep7 />} />
         </Routes>
       </main>
 

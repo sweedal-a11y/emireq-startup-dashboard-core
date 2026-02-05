@@ -1,0 +1,566 @@
+/* OnboardingStep3 Styles - Following Step2 pattern with -step3 suffix */
+.onboarding-container-step3 {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+}
+
+/* Left Side - Branding */
+.onboarding-left-step3 {
+  flex: 1;
+  background: linear-gradient(135deg, #2d4563 0%, #1a2940 100%);
+  padding: 20px 50px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.onboarding-left-step3::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../../assets/register-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.15;
+  z-index: 0;
+}
+
+.onboarding-left-step3 > * {
+  position: relative;
+  z-index: 1;
+}
+
+.onboarding-left-header-step3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+  margin-top: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.trust-badge-onboarding-step3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.trust-badge-onboarding-step3:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.trust-badge-onboarding-step3 span {
+  font-size: 13px;
+  color: #FFFFFF;
+  font-weight: 500;
+}
+
+.language-selector-onboarding-step3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.language-selector-onboarding-step3:hover {
+  opacity: 0.8;
+  transform: translateX(2px);
+}
+
+.language-selector-onboarding-step3 span {
+  font-size: 14px;
+  color: #FFFFFF;
+  font-weight: 500;
+}
+
+.onboarding-content-step3 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-top: 80px;
+}
+
+.step-badge-step3 {
+  display: inline-block;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  font-size: 12px;
+  color: #FFFFFF;
+  font-weight: 500;
+  margin-bottom: 12px;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.onboarding-title-step3 {
+  color: white;
+  font-size: 32px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.quote-icon-onboarding-step3 {
+  margin-bottom: 16px;
+}
+
+.onboarding-description-step3 {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.onboarding-features-step3 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 30px;
+}
+
+.onboarding-feature-item-step3 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 4px;
+  border-radius: 6px;
+}
+
+.onboarding-feature-item-step3:hover {
+  transform: translateX(3px);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.onboarding-feature-item-step3 svg {
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.onboarding-feature-item-step3:hover svg {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 8px rgba(255, 195, 0, 0.5));
+}
+
+.onboarding-feature-item-step3 span {
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Right Side - Form */
+.onboarding-right-step3 {
+  flex: 1.2;
+  background: #FFFFFF;
+  padding: 12px 50px 12px 50px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.onboarding-right-header-step3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.onboarding-logo-step3 {
+  height: 36px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.onboarding-logo-step3:hover {
+  transform: scale(1.05);
+}
+
+.language-selector-right-step3 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #9CA3AF;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.language-selector-right-step3:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+.language-selector-right-step3 span {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Progress Stepper */
+.progress-stepper-step3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0;
+  margin-top: 26px;
+  margin-bottom: 24px;
+  padding: 0;
+  width: 100%;
+}
+
+.progress-step-step3 {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  background: #E5E7EB;
+  color: #9CA3AF;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.progress-step-step3.active {
+  background: #FFC300;
+  color: #000000;
+  box-shadow: 0 4px 12px rgba(255, 195, 0, 0.3);
+}
+
+.progress-step-step3.active::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background: #FFC300;
+  border-radius: 50%;
+}
+
+.progress-step-step3.completed {
+  background: #10B981;
+  color: white;
+}
+
+.progress-line-step3 {
+  height: 2px;
+  width: 20px;
+  background: #E5E7EB;
+  flex-shrink: 0;
+}
+
+/* Form Section */
+.onboarding-form-section-step3 {
+  max-width: 100%;
+  margin: 36px 0 0 0;
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+.form-header-step3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.form-icon-step3 {
+  width: 36px;
+  height: 36px;
+  background: #000000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.form-title-step3 {
+  color: #000000;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.form-subtitle-step3 {
+  color: #6B7280;
+  font-size: 13px;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.onboarding-form-step3 {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Founder Sections */
+.founder-section-step3,
+.cofounder-section-step3 {
+  margin-bottom: 24px;
+}
+
+.section-title-step3 {
+  color: #9CA3AF;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group-step3 {
+  margin-bottom: 16px;
+}
+
+.form-label-step3 {
+  display: block;
+  color: #000000;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.form-input-step3 {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #000000;
+  transition: all 0.3s ease;
+  background: #FFFFFF;
+  font-family: inherit;
+}
+
+.form-input-step3::placeholder {
+  color: #9CA3AF;
+}
+
+.form-input-step3:focus {
+  outline: none;
+  border-color: #000000;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.form-input-step3:hover {
+  border-color: #D1D5DB;
+}
+
+/* Co-Founder Items */
+.cofounder-item-step3 {
+  background: #F9FAFB;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.cofounder-header-step3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.cofounder-title-step3 {
+  color: #000000;
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.remove-cofounder-btn-step3 {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+.remove-cofounder-btn-step3:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.remove-cofounder-btn-step3:hover svg path {
+  stroke: #EF4444;
+}
+
+/* Add Co-Founder Button */
+.add-cofounder-btn-step3 {
+  width: 100%;
+  padding: 12px 24px;
+  background: #FFFFFF;
+  border: 2px dashed #D1D5DB;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #6B7280;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.add-cofounder-btn-step3:hover {
+  border-color: #000000;
+  color: #000000;
+  background: #F9FAFB;
+}
+
+/* Continue Button */
+.btn-continue-step3 {
+  width: 100%;
+  padding: 11px 24px;
+  background: linear-gradient(135deg, #FFC300 0%, #FFD54F 100%);
+  color: #000000;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 18px;
+}
+
+.btn-continue-step3:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 195, 0, 0.4);
+}
+
+.btn-continue-step3:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .onboarding-left-step3,
+  .onboarding-right-step3 {
+    padding: 20px 40px;
+  }
+
+  .onboarding-title-step3 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 968px) {
+  .onboarding-container-step3 {
+    flex-direction: column;
+  }
+
+  .onboarding-left-step3,
+  .onboarding-right-step3 {
+    flex: none;
+    width: 100%;
+    height: auto;
+    padding: 24px 32px;
+  }
+
+  .onboarding-left-step3 {
+    min-height: 40vh;
+  }
+
+  .onboarding-right-step3 {
+    overflow-y: visible;
+    height: auto;
+  }
+
+  .onboarding-features-step3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .onboarding-left-step3,
+  .onboarding-right-step3 {
+    padding: 20px 24px;
+  }
+
+  .onboarding-title-step3 {
+    font-size: 24px;
+  }
+
+  .onboarding-features-step3 {
+    grid-template-columns: 1fr;
+  }
+
+  .progress-stepper-step3 {
+    gap: 4px;
+  }
+
+  .progress-step-step3 {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+
+  .progress-line-step3 {
+    width: 12px;
+  }
+
+  .cofounder-item-step3 {
+    padding: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .trust-badge-onboarding-step3 span {
+    font-size: 11px;
+  }
+
+  .onboarding-left-header-step3 {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .form-title-step3 {
+    font-size: 18px;
+  }
+
+  .progress-step-step3 {
+    width: 28px;
+    height: 28px;
+    font-size: 11px;
+  }
+
+  .progress-line-step3 {
+    width: 8px;
+  }
+}
