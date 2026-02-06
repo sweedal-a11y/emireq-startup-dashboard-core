@@ -9,6 +9,19 @@ const OnboardingStep7 = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Load saved data from localStorage on mount
+  useEffect(() => {
+    try {
+      const savedData = JSON.parse(localStorage.getItem('onboardingData') || '{}');
+      if (savedData.step7 && Array.isArray(savedData.step7.uploadedFiles)) {
+        setUploadedFiles(savedData.step7.uploadedFiles);
+      }
+    } catch (error) {
+      console.error('Error loading saved files:', error);
+      setUploadedFiles([]);
+    }
+  }, []);
+
   // Add cursor activity on mount
   useEffect(() => {
     document.body.style.cursor = 'default';
@@ -65,24 +78,108 @@ const OnboardingStep7 = () => {
     handleFiles(files);
   };
 
-  const handleFiles = (files) => {
+  const handleFiles = async (files) => {
     const validFiles = files.filter(file => {
       const validTypes = ['application/pdf', 'application/vnd.ms-powerpoint', 'application/vnd.openxmlformats-officedocument.presentationml.presentation', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
       const maxSize = 10 * 1024 * 1024; // 10MB
       return validTypes.includes(file.type) && file.size <= maxSize;
     });
     
-    setUploadedFiles(prev => [...prev, ...validFiles]);
+    // Convert files to base64 for storage
+    const filesWithMetadata = await Promise.all(
+      validFiles.map(file => {
+        return new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            resolve({
+              name: file.name,
+              size: file.size,
+              type: file.type,
+              lastModified: file.lastModified,
+              dataUrl: reader.result
+            });
+          };
+          reader.readAsDataURL(file);
+        });
+      })
+    );
+    
+    setUploadedFiles(prev => [...prev, ...filesWithMetadata]);
   };
 
   const handleBrowseClick = () => {
     document.getElementById('file-input-step7').click();
   };
 
+  const handleRemoveFile = (index) => {
+    setUploadedFiles(prev => prev.filter((_, i) => i !== index));
+  };
+
+  const handleFileClick = (file) => {
+    if (file.dataUrl) {
+      // Create a temporary link to download the file
+      const link = document.createElement('a');
+      link.href = file.dataUrl;
+      link.download = file.name;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
+
+  const formatFileSize = (bytes) => {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
+  };
+
+  const getFileIcon = (type) => {
+    if (!type) {
+      return (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="#6B7280" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M14 2V8H20" stroke="#6B7280" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      );
+    }
+    
+    if (type.includes('pdf')) {
+      return (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M14 2V8H20" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      );
+    } else if (type.includes('presentation') || type.includes('powerpoint')) {
+      return (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="#D97706" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M14 2V8H20" stroke="#D97706" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      );
+    } else {
+      return (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="#2563EB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M14 2V8H20" stroke="#2563EB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      );
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     
     setIsSubmitting(true);
+    
+    // Save data to localStorage
+    const existingData = JSON.parse(localStorage.getItem('onboardingData') || '{}');
+    localStorage.setItem('onboardingData', JSON.stringify({
+      ...existingData,
+      step7: { uploadedFiles }
+    }));
     
     // Simulate form submission
     setTimeout(() => {
@@ -253,6 +350,48 @@ const OnboardingStep7 = () => {
                   style={{ display: 'none' }}
                 />
               </div>
+
+              {uploadedFiles.length > 0 && (
+                <div className="uploaded-files-list-step7">
+                  <h3 className="uploaded-files-title-step7">Uploaded Files ({uploadedFiles.length})</h3>
+                  {uploadedFiles.map((file, index) => (
+                    <div key={index} className="uploaded-file-item-step7">
+                      <div 
+                        className="file-info-step7 clickable-file-info"
+                        onClick={() => handleFileClick(file)}
+                        role="button"
+                        tabIndex={0}
+                        onKeyDown={(e) => e.key === 'Enter' && handleFileClick(file)}
+                      >
+                        <div className="file-icon-step7">
+                          {getFileIcon(file.type)}
+                        </div>
+                        <div className="file-details-step7">
+                          <span className="file-name-step7">{file.name}</span>
+                          <span className="file-size-step7">{formatFileSize(file.size)}</span>
+                        </div>
+                        <div className="download-icon-step7">
+                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 10.6667L4.66667 7.33333L5.6 6.33333L7.33333 8.06667V2.66667H8.66667V8.06667L10.4 6.33333L11.3333 7.33333L8 10.6667Z" fill="currentColor"/>
+                            <path d="M13.3333 13.3333H2.66667V8.66667H1.33333V13.3333C1.33333 13.687 1.47381 14.0261 1.72386 14.2761C1.97391 14.5262 2.31304 14.6667 2.66667 14.6667H13.3333C13.687 14.6667 14.0261 14.5262 14.2761 14.2761C14.5262 14.0261 14.6667 13.687 14.6667 13.3333V8.66667H13.3333V13.3333Z" fill="currentColor"/>
+                          </svg>
+                        </div>
+                      </div>
+                      <button
+                        type="button"
+                        className="remove-file-button-step7"
+                        onClick={() => handleRemoveFile(index)}
+                        aria-label="Remove file"
+                      >
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M15 5L5 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          <path d="M5 5L15 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
 
               <div className="recommended-docs-step7">
                 <p className="recommended-title-step7">Recommended documents:</p>

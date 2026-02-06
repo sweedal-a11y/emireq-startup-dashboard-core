@@ -11,6 +11,14 @@ const OnboardingStep5 = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Load saved data from localStorage on mount
+  useEffect(() => {
+    const savedData = JSON.parse(localStorage.getItem('onboardingData') || '{}');
+    if (savedData.step5) {
+      setFormData(savedData.step5);
+    }
+  }, []);
+
   // Add cursor activity on mount
   useEffect(() => {
     document.body.style.cursor = 'default';
@@ -59,6 +67,13 @@ const OnboardingStep5 = () => {
     }
     
     setIsSubmitting(true);
+    
+    // Save data to localStorage
+    const existingData = JSON.parse(localStorage.getItem('onboardingData') || '{}');
+    localStorage.setItem('onboardingData', JSON.stringify({
+      ...existingData,
+      step5: formData
+    }));
     
     // Simulate form submission
     setTimeout(() => {

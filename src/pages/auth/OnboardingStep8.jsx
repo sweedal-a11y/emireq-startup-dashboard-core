@@ -161,6 +161,16 @@ const OnboardingStep8 = () => {
   // Get data from localStorage
   const savedData = JSON.parse(localStorage.getItem('onboardingData') || '{}');
   
+  // Helper function to format compliance areas
+  const formatComplianceAreas = (areas) => {
+    if (!areas) return "Not Provided";
+    const selectedAreas = [];
+    if (areas.interestFree) selectedAreas.push("Interest-Free");
+    if (areas.halalProducts) selectedAreas.push("Halal Products");
+    if (areas.ethicalPractices) selectedAreas.push("Ethical Practices");
+    return selectedAreas.length > 0 ? selectedAreas.join(", ") : "Not Provided";
+  };
+  
   const formData = {
     step1: {
       title: "Company Information",
@@ -174,60 +184,54 @@ const OnboardingStep8 = () => {
       ]
     },
     step2: {
-      title: "Team Information",
+      title: "Company Stage",
       stepLabel: "Step 2",
       data: [
-        { label: "Team Size", value: "Not Provided" },
-        { label: "Founders", value: "Not Provided" },
-        { label: "Key Team Members", value: "Not Provided" }
+        { label: "Company Stage", value: savedData.step2?.companyStage || "Not Provided" }
       ]
     },
     step3: {
-      title: "Product & Market",
+      title: "Founder Information",
       stepLabel: "Step 3",
       data: [
-        { label: "Product Description", value: "Not Provided" },
-        { label: "Target Market", value: "Not Provided" },
-        { label: "Market Size", value: "Not Provided" },
-        { label: "Competitive Advantage", value: "Not Provided" }
+        { label: "Primary Founder Name", value: savedData.step3?.primaryFounder?.fullName || "Not Provided" },
+        { label: "Primary Founder Role", value: savedData.step3?.primaryFounder?.role || "Not Provided" },
+        { label: "Primary Founder Email", value: savedData.step3?.primaryFounder?.email || "Not Provided" },
+        { label: "LinkedIn Profile", value: savedData.step3?.primaryFounder?.linkedinProfile || "Not Provided" },
+        { label: "Co-Founders", value: savedData.step3?.coFounders?.length > 0 ? `${savedData.step3.coFounders.length} co-founder(s)` : "Not Provided" }
       ]
     },
     step4: {
-      title: "Financial Information",
+      title: "Business Model",
       stepLabel: "Step 4",
       data: [
-        { label: "Revenue Model", value: "Not Provided" },
-        { label: "Current Revenue", value: "Not Provided" },
-        { label: "Burn Rate", value: "Not Provided" },
-        { label: "Runway", value: "Not Provided" }
+        { label: "Business Description", value: savedData.step4?.businessDescription || "Not Provided" },
+        { label: "Problem Solving", value: savedData.step4?.problemSolving || "Not Provided" },
+        { label: "Target Market", value: savedData.step4?.targetMarket || "Not Provided" },
+        { label: "Revenue Model", value: savedData.step4?.revenueModel || "Not Provided" }
       ]
     },
     step5: {
       title: "Funding Details",
       stepLabel: "Step 5",
       data: [
-        { label: "Funding Stage", value: "Not Provided" },
-        { label: "Amount Seeking", value: "Not Provided" },
-        { label: "Previous Funding", value: "Not Provided" },
-        { label: "Use of Funds", value: "Not Provided" }
+        { label: "Funding Stage", value: savedData.step5?.companyStage || "Not Provided" },
+        { label: "Amount Raising", value: savedData.step5?.amountRaising || "Not Provided" }
       ]
     },
     step6: {
-      title: "Social Impact",
+      title: "Shariah Compliance",
       stepLabel: "Step 6",
       data: [
-        { label: "Impact Areas", value: "Not Provided" },
-        { label: "SDG Alignment", value: "Not Provided" },
-        { label: "Impact Metrics", value: "Not Provided" }
+        { label: "Shariah Compliance", value: savedData.step6?.shariahCompliance || "Not Provided" },
+        { label: "Compliance Areas", value: formatComplianceAreas(savedData.step6?.complianceAreas) }
       ]
     },
     step7: {
       title: "Documents",
       stepLabel: "Step 7",
       data: [
-        { label: "Pitch Deck", value: "Not Provided" },
-        { label: "Business Plan", value: "Not Provided" },
-        { label: "Financial Statements", value: "Not Provided" }
+        { label: "Uploaded Files", value: savedData.step7?.uploadedFiles?.length > 0 ? `${savedData.step7.uploadedFiles.length} file(s) uploaded` : "No files uploaded" }
       ]
     }
   };

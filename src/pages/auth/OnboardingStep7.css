@@ -549,6 +549,138 @@
   }
 }
 
+/* Uploaded Files List */
+.uploaded-files-list-step7 {
+  margin-top: 20px;
+  padding: 16px;
+  background: #F9FAFB;
+  border-radius: 8px;
+  border: 1px solid #E5E7EB;
+}
+
+.uploaded-files-title-step7 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 12px 0;
+}
+
+.uploaded-file-item-step7 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  background: white;
+  border-radius: 6px;
+  border: 1px solid #E5E7EB;
+  margin-bottom: 8px;
+  transition: all 0.2s ease;
+}
+
+.uploaded-file-item-step7:last-child {
+  margin-bottom: 0;
+}
+
+.uploaded-file-item-step7:hover {
+  border-color: #D1D5DB;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.file-info-step7 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.clickable-file-info {
+  cursor: pointer;
+  transition: background 0.2s ease;
+  padding: 4px 8px;
+  margin: -4px -8px;
+  border-radius: 4px;
+}
+
+.clickable-file-info:hover {
+  background: #F3F4F6;
+}
+
+.clickable-file-info:hover .file-name-step7 {
+  color: #2563EB;
+  text-decoration: underline;
+}
+
+.clickable-file-info:active {
+  transform: scale(0.98);
+}
+
+.file-icon-step7 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.file-details-step7 {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.file-name-step7 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111827;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s ease;
+}
+
+.file-size-step7 {
+  font-size: 12px;
+  color: #6B7280;
+}
+
+.download-icon-step7 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6B7280;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  margin-left: auto;
+}
+
+.clickable-file-info:hover .download-icon-step7 {
+  opacity: 1;
+}
+
+.remove-file-button-step7 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  color: #6B7280;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.remove-file-button-step7:hover {
+  background: #FEE2E2;
+  color: #DC2626;
+}
+
+.remove-file-button-step7:active {
+  transform: scale(0.95);
+}
+
 @media (max-width: 640px) {
   .onboarding-left-step7,
   .onboarding-right-step7 {
