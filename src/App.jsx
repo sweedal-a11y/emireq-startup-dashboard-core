@@ -7,6 +7,7 @@ import MyProfile from "./pages/MyProfile";
 import OutreachPage from "./pages/outreach/OutreachPage";
 import InvestorInquiriesPage from "./pages/investor/InvestorInquiriesPage";
 import FundingProgressPage from "./pages/funding/FundingProgressPage";
+import FinancialCorePage from "./pages/financial-core/FinancialCorePage";
 import MessagesPage from "./pages/messages/MessagesPage";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
@@ -118,8 +119,8 @@ function AppContent() {
     navigate("/auth/login");
   };
 
-  // Don't show sidebar on auth pages
-  const isAuthPage = location.pathname.startsWith("/auth") || location.pathname.startsWith("/onboarding");
+  // Don't show sidebar on auth pages and financial-core
+  const isAuthPage = location.pathname.startsWith("/auth") || location.pathname.startsWith("/onboarding") || location.pathname.startsWith("/financial-core");
 
   return (
     <div className={`em-app ${isDarkMode ? 'em-app--dark' : ''}`}>
@@ -139,6 +140,7 @@ function AppContent() {
           <Route path="/outreach" element={<OutreachPage isDarkMode={isDarkMode} toggleTheme={toggleTheme} />} />
           <Route path="/investor-inquiries" element={<InvestorInquiriesPage isDarkMode={isDarkMode} toggleTheme={toggleTheme} sidebarCollapsed={sidebarCollapsed} />} />
           <Route path="/funding" element={<FundingProgressPage toggleTheme={toggleTheme} sidebarCollapsed={sidebarCollapsed} />} />
+          <Route path="/financial-core" element={<FinancialCorePage />} />
           <Route path="/messages" element={<MessagesPage toggleTheme={toggleTheme} sidebarCollapsed={sidebarCollapsed} />} />
           <Route path="/documents" element={<DocumentsPage toggleTheme={toggleTheme} sidebarCollapsed={sidebarCollapsed} />} />
           <Route path="/auth/login" element={<Login />} />

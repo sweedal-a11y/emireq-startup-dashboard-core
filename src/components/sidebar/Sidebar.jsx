@@ -14,6 +14,7 @@ export default function Sidebar({ collapsed, onToggle, onLogoutClick }) {
     else if (path.startsWith("/outreach")) setSelected("outreach");
     else if (path.startsWith("/investor-inquiries")) setSelected("investor-inquiries");
     else if (path.startsWith("/funding")) setSelected("funding");
+    else if (path.startsWith("/financial-core")) setSelected("financial-core");
     else if (path.startsWith("/documents")) setSelected("documents");
     else if (path.startsWith("/messages")) setSelected("messages");
     else setSelected("");
@@ -155,6 +156,20 @@ export default function Sidebar({ collapsed, onToggle, onLogoutClick }) {
           </svg>
           <span>Funding Progress</span>
         </NavLink>
+        <NavLink
+          to="/financial-core"
+          end
+          onClick={() => setSelected("financial-core")}
+          className={({ isActive }) =>
+            `em-sidebar-item ${(isActive || selected === "financial-core") ? "active" : ""}`
+          }
+        >
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 10.6667L5.33333 7.33333L8 10L14 4" stroke="#121212" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M10.6667 4H14V7.33333" stroke="#121212" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          <span>Financial Core</span>
+        </NavLink>
       </div>
 
       <div className="em-sidebar-section">
@@ -202,7 +217,7 @@ export default function Sidebar({ collapsed, onToggle, onLogoutClick }) {
         </NavLink>
       </div>
 
-      <div className="em-sidebar-section">
+      <div className="em-sidebar-section em-sidebar-section--account">
         <p className="em-sidebar-title">ACCOUNT</p>
         <button
   className="em-sidebar-item em-sidebar-item--logout"
