@@ -87,8 +87,8 @@ const OnboardingStep7 = () => {
     // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
-      // Navigate to overview
-      navigate('/overview');
+      // Navigate to step 8 (Review & Submit)
+      navigate('/onboarding/step8');
     }, 1500);
   };
 

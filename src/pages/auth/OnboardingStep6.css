@@ -231,10 +231,24 @@
   transition: all 0.3s ease;
 }
 
+.progress-step-step6 {
+  cursor: pointer;
+}
+
+.progress-step-step6:hover {
+  transform: scale(1.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
 .progress-step-step6.completed {
   background: #10B981;
   border-color: #10B981;
   color: white;
+}
+
+.progress-step-step6.completed:hover {
+  background: #059669;
+  border-color: #059669;
 }
 
 .progress-step-step6.active {

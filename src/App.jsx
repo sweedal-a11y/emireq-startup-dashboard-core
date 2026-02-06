@@ -17,6 +17,8 @@ import OnboardingStep4 from "./pages/auth/OnboardingStep4";
 import OnboardingStep5 from "./pages/auth/OnboardingStep5";
 import OnboardingStep6 from "./pages/auth/OnboardingStep6";
 import OnboardingStep7 from "./pages/auth/OnboardingStep7";
+import OnboardingStep8 from "./pages/auth/OnboardingStep8";
+import OnboardingStep9 from "./pages/auth/OnboardingStep9";
 import DocumentsPage from "./pages/documents/DocumentsPage";
 import "./App.css";
 
@@ -148,6 +150,8 @@ function AppContent() {
           <Route path="/onboarding/step5" element={<OnboardingStep5 />} />
           <Route path="/onboarding/step6" element={<OnboardingStep6 />} />
           <Route path="/onboarding/step7" element={<OnboardingStep7 />} />
+          <Route path="/onboarding/step8" element={<OnboardingStep8 />} />
+          <Route path="/onboarding/step9" element={<OnboardingStep9 />} />
         </Routes>
       </main>
 
