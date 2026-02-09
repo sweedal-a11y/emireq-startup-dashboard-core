@@ -110,26 +110,30 @@ export default function CoreFinancialOverview() {
             <div className="health-status-banner">
               <div className="health-banner-left">
                 <div className="health-status-indicator">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="12" cy="12" r="10" fill="#00A63E"/>
-                    <path d="M8 12L11 15L16 9" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_37_7494)">
+<path d="M18.3333 9.99999H16.2667C15.9025 9.99921 15.548 10.1177 15.2576 10.3375C14.9671 10.5572 14.7567 10.866 14.6583 11.2167L12.7 18.1833C12.6874 18.2266 12.6611 18.2646 12.625 18.2917C12.5889 18.3187 12.5451 18.3333 12.5 18.3333C12.4549 18.3333 12.4111 18.3187 12.375 18.2917C12.3389 18.2646 12.3126 18.2266 12.3 18.1833L7.7 1.81666C7.68738 1.77338 7.66106 1.73537 7.625 1.70832C7.58894 1.68128 7.54507 1.66666 7.5 1.66666C7.45492 1.66666 7.41106 1.68128 7.375 1.70832C7.33894 1.73537 7.31262 1.77338 7.3 1.81666L5.34166 8.78332C5.24372 9.13262 5.03448 9.44042 4.74572 9.66C4.45695 9.87958 4.10443 9.99895 3.74166 9.99999H1.66666" stroke="#00A63E" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_37_7494">
+<rect width="20" height="20" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+
                   <span className="status-label">System Status: Healthy</span>
                 </div>
                 <div className="health-score-section">
                   <h2 className="health-score-title">Financial Health Score: <span className="score-value">92/100</span></h2>
-                  <p className="health-score-subtitle">All core metrics within optimal range</p>
+                  <p className="health-score-subtitle" style={{ color: '#00A63E' }}>All core metrics within optimal range</p>
                 </div>
               </div>
               <div className="health-banner-right">
                 <div className="score-change">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10.6666 4.66669H14.6666V8.66669" stroke="#00A63E" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M14.6667 4.66669L9.00004 10.3334L5.66671 7.00002L1.33337 11.3334" stroke="#00A63E" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                  <span>+3 points</span>
+               
+                  <span style={{ color: '#00B031' }}>+3 points</span>
                 </div>
-                <span className="period-label">vs last period</span>
+                <span className="period-label" style={{ color: '#00B031' }}>vs last period</span>
               </div>
             </div>
 
@@ -220,7 +224,7 @@ export default function CoreFinancialOverview() {
                   </div>
 
                   {/* System-wide Exposure */}
-                  <div className="core-metric-card warning">
+                  <div className="core-metric-card warning" style={{ borderColor: '#F59E0B' }}>
                     <div className="core-metric-header">
                       <h3 className="metric-title">System-wide Exposure</h3>
                       <div className="metric-change-indicator warning">
@@ -233,7 +237,7 @@ export default function CoreFinancialOverview() {
                     </div>
                     <div className="core-metric-value">$1.2B</div>
                     <div className="core-metric-footer">vs last period</div>
-                    <div className="warning-badge">
+                    <div className="warning-badge" style={{ position: 'absolute', top: '12px', right: '12px' }}>
                       <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="6" cy="6" r="5" stroke="#F59E0B" strokeWidth="1"/>
                         <path d="M6 3.5V6.5" stroke="#F59E0B" strokeWidth="1" strokeLinecap="round"/>
@@ -259,7 +263,7 @@ export default function CoreFinancialOverview() {
                   </div>
 
                   {/* Real-time Financial Health Score */}
-                  <div className="core-metric-card highlight">
+                  <div className="core-metric-card">
                     <div className="core-metric-header">
                       <h3 className="metric-title">Real-time Financial Health Score</h3>
                       <div className="metric-change-indicator positive">
