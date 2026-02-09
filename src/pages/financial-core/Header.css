@@ -370,3 +370,112 @@
 .em-app--dark .em-profile-item:hover {
   background: #374151;
 }
+
+/* Dark Mode for Financial Core Page */
+.financial-core-page.dark-mode .em-header {
+  background-color: #1e293b;
+  border-bottom-color: #334155;
+}
+
+.financial-core-page.dark-mode .em-header-title {
+  color: #f8fafc;
+}
+
+.financial-core-page.dark-mode .em-header-theme-toggle {
+  background: #334155;
+}
+
+.financial-core-page.dark-mode .em-header-theme-toggle:hover {
+  background: #475569;
+}
+
+.financial-core-page.dark-mode .em-header-theme-toggle svg path {
+  stroke: #f8fafc;
+}
+
+.financial-core-page.dark-mode .em-header-search {
+  background: #334155;
+  border-color: #475569;
+}
+
+.financial-core-page.dark-mode .em-header-search-icon path {
+  stroke: #94a3b8;
+}
+
+.financial-core-page.dark-mode .em-header-search-input {
+  color: #f8fafc;
+}
+
+.financial-core-page.dark-mode .em-header-search-input::placeholder {
+  color: #64748b;
+}
+
+.financial-core-page.dark-mode .em-header-search:focus-within {
+  border-color: #60a5fa;
+  background: #334155;
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+}
+
+.financial-core-page.dark-mode .em-header-search:hover {
+  border-color: #475569;
+}
+
+.financial-core-page.dark-mode .em-header-notification {
+  background: #334155;
+}
+
+.financial-core-page.dark-mode .em-header-notification:hover {
+  background: #475569;
+}
+
+.financial-core-page.dark-mode .em-header-notification-icon path {
+  stroke: #f8fafc;
+}
+
+.financial-core-page.dark-mode .em-header-notification-dot {
+  border-color: #1e293b;
+}
+
+.financial-core-page.dark-mode .em-header-profile {
+  background: #334155;
+}
+
+.financial-core-page.dark-mode .em-header-profile:hover {
+  background: #475569;
+}
+
+.financial-core-page.dark-mode .em-header-profile-menu:hover {
+  background: #475569;
+}
+
+.financial-core-page.dark-mode .em-header-profile-menu svg path {
+  stroke: #f8fafc;
+}
+
+.financial-core-page.dark-mode .em-profile-dropdown {
+  background: #1e293b;
+  box-shadow:
+    0 10px 20px rgba(0,0,0,0.3),
+    0 2px 6px rgba(0,0,0,0.2);
+}
+
+.financial-core-page.dark-mode .em-profile-name {
+  color: #f8fafc;
+}
+
+.financial-core-page.dark-mode .em-profile-email {
+  color: #94a3b8;
+}
+
+.financial-core-page.dark-mode .em-profile-divider {
+  background: #334155;
+}
+
+.financial-core-page.dark-mode .em-profile-item {
+  color: #f8fafc;
+}
+
+.financial-core-page.dark-mode .em-profile-item:hover {
+  background: #334155;
+}
+

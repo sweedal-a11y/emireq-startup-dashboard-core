@@ -8,6 +8,7 @@ import OutreachPage from "./pages/outreach/OutreachPage";
 import InvestorInquiriesPage from "./pages/investor/InvestorInquiriesPage";
 import FundingProgressPage from "./pages/funding/FundingProgressPage";
 import FinancialCorePage from "./pages/financial-core/FinancialCorePage";
+import CoreFinancialOverview from "./pages/financial-core/CoreFinancialOverview";
 import MessagesPage from "./pages/messages/MessagesPage";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
@@ -141,6 +142,7 @@ function AppContent() {
           <Route path="/investor-inquiries" element={<InvestorInquiriesPage isDarkMode={isDarkMode} toggleTheme={toggleTheme} sidebarCollapsed={sidebarCollapsed} />} />
           <Route path="/funding" element={<FundingProgressPage toggleTheme={toggleTheme} sidebarCollapsed={sidebarCollapsed} />} />
           <Route path="/financial-core" element={<FinancialCorePage />} />
+          <Route path="/financial-core/overview" element={<CoreFinancialOverview />} />
           <Route path="/messages" element={<MessagesPage toggleTheme={toggleTheme} sidebarCollapsed={sidebarCollapsed} />} />
           <Route path="/documents" element={<DocumentsPage toggleTheme={toggleTheme} sidebarCollapsed={sidebarCollapsed} />} />
           <Route path="/auth/login" element={<Login />} />

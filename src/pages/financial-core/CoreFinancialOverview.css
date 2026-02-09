@@ -1,0 +1,887 @@
+/* Core Financial Overview Page */
+.core-financial-overview-page {
+  display: flex;
+  min-height: 100vh;
+  background: #f9fafb;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+.core-financial-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin-left: 260px;
+  transition: margin-left 0.3s ease;
+}
+
+.core-financial-content {
+  flex: 1;
+  overflow-y: auto;
+  background: #f9fafb;
+  transition: background-color 0.3s ease;
+}
+
+.core-financial-container {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 20px 40px;
+}
+
+/* Page Header */
+.core-page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 20px;
+}
+
+.core-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+
+.back-to-financial-core {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: transparent;
+  color: #6B7280;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  width: fit-content;
+}
+
+.back-to-financial-core:hover {
+  background: #F3F4F6;
+  color: #111827;
+  border-color: rgba(0, 0, 0, 0.15);
+  transform: translateX(-2px);
+}
+
+.back-to-financial-core:active {
+  transform: translateX(0);
+}
+
+.back-to-financial-core svg {
+  flex-shrink: 0;
+}
+
+.core-header-content h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.02em;
+  transition: color 0.3s ease;
+}
+
+.core-header-content p {
+  font-size: 15px;
+  color: #6b7280;
+  margin: 0;
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+.export-report-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.export-report-btn:hover {
+  background: #1a1a1a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.export-report-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Health Status Banner */
+.health-status-banner {
+  background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%);
+  border: 1.5px solid #A7F3D0;
+  border-radius: 16px;
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  max-width: 755px;
+}
+
+.health-status-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.2);
+  border-color: #6EE7B7;
+}
+
+.health-banner-left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.health-status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.status-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #065F46;
+  letter-spacing: -0.01em;
+}
+
+.health-score-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.health-score-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.score-value {
+  color: #00A63E;
+  font-size: 32px;
+}
+
+.health-score-subtitle {
+  font-size: 13px;
+  color: #6B7280;
+  margin: 0;
+  font-weight: 400;
+}
+
+.health-banner-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.score-change {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 166, 62, 0.2);
+}
+
+.score-change svg {
+  flex-shrink: 0;
+}
+
+.score-change span {
+  font-size: 15px;
+  font-weight: 700;
+  color: #00A63E;
+}
+
+.period-label {
+  font-size: 12px;
+  color: #6B7280;
+  font-weight: 500;
+}
+
+/* Main Grid Layout */
+.core-main-grid {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 32px;
+  align-items: start;
+}
+
+.core-left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.core-right-col {
+  position: sticky;
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-top: -180px;
+}
+
+/* Metrics Grid */
+.core-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.core-metric-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
+  padding: 24px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.core-metric-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(0, 0, 0, 0.01) 100%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.core-metric-card:hover {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+}
+
+.core-metric-card:hover::before {
+  opacity: 1;
+}
+
+.core-metric-card:active {
+  transform: translateY(-2px);
+}
+
+.core-metric-card.highlight {
+  background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 100%);
+  border-color: #A7F3D0;
+}
+
+.core-metric-card.warning {
+  position: relative;
+}
+
+.warning-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FEF3C7;
+  border-radius: 50%;
+  animation: pulse-warning 2s ease-in-out infinite;
+}
+
+@keyframes pulse-warning {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.core-metric-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  gap: 12px;
+}
+
+.metric-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6B7280;
+  margin: 0;
+  line-height: 1.4;
+  flex: 1;
+}
+
+.metric-change-indicator {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.metric-change-indicator.positive {
+  background: #F0FDF4;
+}
+
+.metric-change-indicator.positive span {
+  font-size: 13px;
+  font-weight: 700;
+  color: #00A63E;
+}
+
+.metric-change-indicator.negative {
+  background: #F0FDF4;
+}
+
+.metric-change-indicator.negative span {
+  font-size: 13px;
+  font-weight: 700;
+  color: #00A63E;
+}
+
+.metric-change-indicator.warning {
+  background: #FEF3C7;
+}
+
+.metric-change-indicator.warning span {
+  font-size: 13px;
+  font-weight: 700;
+  color: #F59E0B;
+}
+
+.core-metric-value {
+  font-size: 36px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.core-metric-footer {
+  font-size: 12px;
+  color: #9CA3AF;
+  font-weight: 500;
+}
+
+/* Executive Summary Card */
+.executive-summary-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
+  padding: 28px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.executive-summary-card:hover {
+  border-color: rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.summary-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 20px 0;
+  letter-spacing: -0.01em;
+}
+
+.summary-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.summary-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  background: #F9FAFB;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.summary-item:hover {
+  background: #F3F4F6;
+  transform: translateX(4px);
+}
+
+.summary-bullet {
+  width: 6px;
+  height: 6px;
+  background: #155DFC;
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.summary-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #374151;
+  margin: 0;
+}
+
+.summary-text strong {
+  font-weight: 700;
+  color: #111827;
+}
+
+/* Quick Access Card */
+.quick-access-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
+  padding: 24px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.quick-access-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 20px 0;
+  letter-spacing: -0.01em;
+}
+
+.quick-access-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.quick-access-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6B7280;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: left;
+  width: 100%;
+}
+
+.quick-access-item:hover {
+  background: #F3F4F6;
+  color: #111827;
+}
+
+.quick-access-item:hover svg {
+  stroke: #155DFC;
+}
+
+.quick-access-item.active {
+  background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+  color: #155DFC;
+  font-weight: 600;
+}
+
+.quick-access-item.active svg {
+  stroke: #155DFC;
+}
+
+.quick-access-item svg {
+  flex-shrink: 0;
+  stroke: #6B7280;
+  transition: stroke 0.2s ease;
+}
+
+.quick-access-item span {
+  line-height: 1.4;
+}
+
+/* Dark Mode Styles */
+.core-financial-overview-page.dark-mode {
+  background: #0F172A;
+}
+
+.core-financial-overview-page.dark-mode .core-financial-content {
+  background: #0F172A;
+}
+
+.core-financial-overview-page.dark-mode .core-header-content h1 {
+  color: #F9FAFB;
+}
+
+.core-financial-overview-page.dark-mode .core-header-content p {
+  color: #94A3B8;
+}
+
+.core-financial-overview-page.dark-mode .export-report-btn {
+  background: #000000;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.core-financial-overview-page.dark-mode .export-report-btn:hover {
+  background: #1a1a1a;
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+.core-financial-overview-page.dark-mode .health-status-banner {
+  background: linear-gradient(135deg, #064E3B 0%, #065F46 100%);
+  border-color: #047857;
+  box-shadow: 0 4px 12px rgba(6, 95, 70, 0.3);
+}
+
+.core-financial-overview-page.dark-mode .health-status-banner:hover {
+  border-color: #059669;
+  box-shadow: 0 8px 24px rgba(6, 95, 70, 0.4);
+}
+
+.core-financial-overview-page.dark-mode .status-label {
+  color: #A7F3D0;
+}
+
+.core-financial-overview-page.dark-mode .health-score-title {
+  color: #F9FAFB;
+}
+
+.core-financial-overview-page.dark-mode .score-value {
+  color: #34D399;
+}
+
+.core-financial-overview-page.dark-mode .health-score-subtitle {
+  color: #94A3B8;
+}
+
+.core-financial-overview-page.dark-mode .score-change {
+  background: rgba(6, 78, 59, 0.6);
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.core-financial-overview-page.dark-mode .score-change span {
+  color: #34D399;
+}
+
+.core-financial-overview-page.dark-mode .period-label {
+  color: #94A3B8;
+}
+
+.core-financial-overview-page.dark-mode .core-metric-card {
+  background: #1E293B;
+  border-color: rgba(148, 163, 184, 0.15);
+}
+
+.core-financial-overview-page.dark-mode .core-metric-card:hover {
+  border-color: rgba(148, 163, 184, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.core-financial-overview-page.dark-mode .core-metric-card.highlight {
+  background: linear-gradient(135deg, #064E3B 0%, #065F46 100%);
+  border-color: #047857;
+}
+
+.core-financial-overview-page.dark-mode .warning-badge {
+  background: rgba(245, 158, 11, 0.2);
+}
+
+.core-financial-overview-page.dark-mode .metric-title {
+  color: #94A3B8;
+}
+
+.core-financial-overview-page.dark-mode .metric-change-indicator.positive {
+  background: rgba(16, 185, 129, 0.15);
+}
+
+.core-financial-overview-page.dark-mode .metric-change-indicator.negative {
+  background: rgba(16, 185, 129, 0.15);
+}
+
+.core-financial-overview-page.dark-mode .metric-change-indicator.warning {
+  background: rgba(245, 158, 11, 0.15);
+}
+
+.core-financial-overview-page.dark-mode .core-metric-value {
+  color: #F9FAFB;
+}
+
+.core-financial-overview-page.dark-mode .core-metric-footer {
+  color: #64748B;
+}
+
+.core-financial-overview-page.dark-mode .executive-summary-card {
+  background: #1E293B;
+  border-color: rgba(148, 163, 184, 0.15);
+}
+
+.core-financial-overview-page.dark-mode .executive-summary-card:hover {
+  border-color: rgba(148, 163, 184, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.core-financial-overview-page.dark-mode .summary-title {
+  color: #F9FAFB;
+}
+
+.core-financial-overview-page.dark-mode .summary-item {
+  background: #0F172A;
+}
+
+.core-financial-overview-page.dark-mode .summary-item:hover {
+  background: #1E293B;
+}
+
+.core-financial-overview-page.dark-mode .summary-text {
+  color: #CBD5E1;
+}
+
+.core-financial-overview-page.dark-mode .summary-text strong {
+  color: #F9FAFB;
+}
+
+.core-financial-overview-page.dark-mode .quick-access-card {
+  background: #1E293B;
+  border-color: rgba(148, 163, 184, 0.15);
+}
+
+.core-financial-overview-page.dark-mode .quick-access-card h3 {
+  color: #F9FAFB;
+}
+
+.core-financial-overview-page.dark-mode .quick-access-item {
+  color: #94A3B8;
+}
+
+.core-financial-overview-page.dark-mode .quick-access-item:hover {
+  background: #0F172A;
+  color: #F9FAFB;
+}
+
+.core-financial-overview-page.dark-mode .quick-access-item:hover svg {
+  stroke: #60A5FA;
+}
+
+.core-financial-overview-page.dark-mode .quick-access-item.active {
+  background: linear-gradient(135deg, rgba(21, 93, 252, 0.15) 0%, rgba(21, 93, 252, 0.1) 100%);
+  color: #60A5FA;
+}
+
+.core-financial-overview-page.dark-mode .quick-access-item.active svg {
+  stroke: #60A5FA;
+}
+
+.core-financial-overview-page.dark-mode .quick-access-item svg {
+  stroke: #94A3B8;
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+  .core-main-grid {
+    grid-template-columns: 1fr 350px;
+    gap: 24px;
+  }
+
+  .core-metrics-grid {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .core-financial-main {
+    margin-left: 0;
+  }
+
+  .core-main-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .core-right-col {
+    position: static;
+  }
+
+  .core-financial-container {
+    padding: 16px 24px;
+  }
+
+  .health-status-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .health-banner-right {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .core-page-header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .export-report-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .core-metrics-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .core-header-content h1 {
+    font-size: 24px;
+  }
+
+  .core-header-content p {
+    font-size: 14px;
+  }
+
+  .health-score-title {
+    font-size: 22px;
+  }
+
+  .score-value {
+    font-size: 26px;
+  }
+
+  .core-metric-value {
+    font-size: 28px;
+  }
+
+  .core-financial-container {
+    padding: 12px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .core-header-content h1 {
+    font-size: 20px;
+  }
+
+  .health-status-banner {
+    padding: 16px 20px;
+  }
+
+  .health-score-title {
+    font-size: 18px;
+  }
+
+  .score-value {
+    font-size: 22px;
+  }
+
+  .core-metric-card {
+    padding: 20px;
+  }
+
+  .core-metric-value {
+    font-size: 24px;
+  }
+
+  .executive-summary-card {
+    padding: 20px;
+  }
+
+  .quick-access-card {
+    padding: 20px;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .core-financial-main {
+    margin-left: 0;
+  }
+
+  .export-report-btn {
+    display: none;
+  }
+
+  .quick-access-card {
+    display: none;
+  }
+
+  .core-main-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .core-metric-card,
+  .executive-summary-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .core-financial-overview-page *,
+  .core-financial-overview-page *::before,
+  .core-financial-overview-page *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus Styles for Accessibility */
+.export-report-btn:focus-visible,
+.quick-access-item:focus-visible {
+  outline: 2px solid #155DFC;
+  outline-offset: 2px;
+}
+
+.core-financial-overview-page.dark-mode .export-report-btn:focus-visible,
+.core-financial-overview-page.dark-mode .quick-access-item:focus-visible {
+  outline-color: #60A5FA;
+}
+
+/* Smooth Scrolling */
+.core-financial-content {
+  scroll-behavior: smooth;
+}
+
+/* Selection Styles */
+.core-financial-overview-page ::selection {
+  background: rgba(21, 93, 252, 0.2);
+  color: inherit;
+}
+
+.core-financial-overview-page.dark-mode ::selection {
+  background: rgba(96, 165, 250, 0.3);
+  color: inherit;
+}
