@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./FinancialSidebar.css";
 
-export default function FinancialSidebar({ onLogout }) {
+export default function FinancialSidebar({ onLogout, isDarkMode }) {
   const navigate = useNavigate();
   const [activeItem, setActiveItem] = useState("dashboard");
 
@@ -118,7 +118,7 @@ export default function FinancialSidebar({ onLogout }) {
   };
 
   return (
-    <aside className="financial-sidebar">
+    <aside className={`financial-sidebar ${isDarkMode ? 'dark-mode' : ''}`}>
       {/* Header with Back Button */}
       <div className="financial-sidebar-header">
         <button className="back-button" onClick={handleBackToMain}>

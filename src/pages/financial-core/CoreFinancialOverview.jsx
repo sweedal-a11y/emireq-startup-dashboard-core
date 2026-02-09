@@ -329,7 +329,7 @@ export default function CoreFinancialOverview() {
                       <span>Core Financial Overview</span>
                     </button>
                     
-                    <button className="quick-access-item" onClick={() => handleQuickAccessClick('/financial-core')}>
+                    <button className="quick-access-item" onClick={() => handleQuickAccessClick('/financial-core/treasury-liquidity')}>
                       <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                         <rect x="2" y="2" width="6" height="6" rx="1" stroke="currentColor" strokeWidth="1.5"/>
                         <rect x="10" y="2" width="6" height="6" rx="1" stroke="currentColor" strokeWidth="1.5"/>

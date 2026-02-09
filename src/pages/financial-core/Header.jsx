@@ -19,7 +19,7 @@ export default function Header({ isDarkMode, toggleTheme }) {
   }, []);
 
   return (
-    <header className="em-header">
+    <header className={`em-header ${isDarkMode ? 'dark-mode' : ''}`}>
       <h2 className="em-header-title">Dashboard</h2>
 
       <div className="em-header-actions">

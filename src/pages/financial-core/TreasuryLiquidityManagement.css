@@ -1,0 +1,944 @@
+/* Treasury & Liquidity Management Page */
+.treasury-liquidity-page {
+  display: flex;
+  min-height: 100vh;
+  background-color: #FAFAFA;
+  transition: background-color 0.3s ease;
+}
+
+.treasury-liquidity-page.dark-mode {
+  background-color: #0A0A0A;
+}
+
+.treasury-liquidity-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: 240px;
+  transition: margin-left 0.3s ease;
+}
+
+.treasury-liquidity-content {
+  flex: 1;
+  padding: 24px 32px;
+  overflow-y: auto;
+}
+
+.treasury-liquidity-container {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* Page Header */
+.treasury-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.treasury-header-content {
+  flex: 1;
+}
+
+.treasury-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.dark-mode .treasury-breadcrumb {
+  color: #999;
+}
+
+.back-button {
+  all: unset;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  color: #374151;
+  transition: color 0.2s ease;
+}
+
+.back-button:hover {
+  color: #121212;
+}
+
+.back-button:hover svg path {
+  stroke: #121212;
+  transition: stroke 0.2s ease;
+}
+
+.back-button svg {
+  flex-shrink: 0;
+}
+
+.back-button svg path {
+  transition: stroke 0.2s ease;
+}
+
+.dark-mode .back-button {
+  color: #9CA3AF;
+}
+
+.dark-mode .back-button:hover {
+  color: #F9FAFB;
+}
+
+.dark-mode .back-button svg path {
+  stroke: #9CA3AF;
+}
+
+.dark-mode .back-button:hover svg path {
+  stroke: #F9FAFB;
+}
+
+.breadcrumb-separator {
+  color: #D1D5DB;
+}
+
+.breadcrumb-current {
+  color: #6B7280;
+  font-weight: 500;
+}
+
+.dark-mode .breadcrumb-current {
+  color: #9CA3AF;
+}
+
+.treasury-page-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 8px 0;
+  line-height: 1.2;
+}
+
+.dark-mode .treasury-page-header h1 {
+  color: #F9FAFB;
+}
+
+.treasury-page-header p {
+  font-size: 16px;
+  color: #6B7280;
+  margin: 0;
+}
+
+.dark-mode .treasury-page-header p {
+  color: #9CA3AF;
+}
+
+.export-report-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.export-report-btn:hover {
+  background: #F9FAFB;
+  border-color: #D1D5DB;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.dark-mode .export-report-btn {
+  background: #1A1A1A;
+  border-color: #333;
+  color: #E5E7EB;
+}
+
+.dark-mode .export-report-btn:hover {
+  background: #252525;
+  border-color: #444;
+}
+
+/* Liquidity Status Banner */
+.liquidity-status-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 28px;
+  background: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
+  border-radius: 12px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(0, 102, 255, 00.15);
+  max-width: 800px;
+}
+
+.liquidity-banner-left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.liquidity-status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.liquidity-status-indicator .status-label {
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0.95;
+}
+
+.liquidity-main-info h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 4px 0;
+  line-height: 1.2;
+}
+
+.liquidity-main-info .liquidity-subtitle {
+  font-size: 14px;
+  color: #FFFFFF;
+  opacity: 0.85;
+  margin: 0;
+}
+
+.liquidity-banner-right svg {
+  opacity: 0.9;
+}
+
+/* Main Grid Layout */
+.treasury-main-grid {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 32px;
+  align-items: start;
+}
+
+.treasury-left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.treasury-right-col {
+  position: sticky;
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-top: -180px;
+}
+
+/* Cash Flow Grid */
+.cash-flow-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* Treasury Metric Cards */
+.treasury-metric-card {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.2s ease;
+  cursor: default;
+}
+
+.treasury-metric-card:hover {
+  border-color: #D1D5DB;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+.treasury-metric-card.warning {
+  border-color: #FCD34D;
+  background: linear-gradient(to bottom, #FFFBEB 0%, #FFFFFF 100%);
+}
+
+.dark-mode .treasury-metric-card {
+  background: #1A1A1A;
+  border-color: #333;
+}
+
+.dark-mode .treasury-metric-card:hover {
+  border-color: #444;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .treasury-metric-card.warning {
+  border-color: #F59E0B;
+  background: linear-gradient(to bottom, rgba(245, 158, 11, 0.1) 0%, #1A1A1A 100%);
+}
+
+.treasury-metric-header {
+  margin-bottom: 16px;
+}
+
+.metric-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.metric-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6B7280;
+  margin: 0;
+  line-height: 1.4;
+  flex: 1;
+}
+
+.dark-mode .metric-title {
+  color: #9CA3AF;
+}
+
+.metric-status {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.metric-status.positive {
+  background: #D1FAE5;
+  color: #065F46;
+}
+
+.metric-status.met {
+  background: #D1FAE5;
+  color: #065F46;
+}
+
+.metric-status.optimal {
+  background: #DBEAFE;
+  color: #1E40AF;
+}
+
+.metric-status.adequate {
+  background: #E0E7FF;
+  color: #4338CA;
+}
+
+.metric-status.action {
+  background: #FEF3C7;
+  color: #92400E;
+}
+
+.metric-status.healthy {
+  background: #D1FAE5;
+  color: #065F46;
+}
+
+.dark-mode .metric-status.positive,
+.dark-mode .metric-status.met,
+.dark-mode .metric-status.healthy {
+  background: rgba(16, 185, 129, 0.2);
+  color: #6EE7B7;
+}
+
+.dark-mode .metric-status.optimal {
+  background: rgba(59, 130, 246, 0.2);
+  color: #93C5FD;
+}
+
+.dark-mode .metric-status.adequate {
+  background: rgba(99, 102, 241, 0.2);
+  color: #A5B4FC;
+}
+
+.dark-mode .metric-status.action {
+  background: rgba(245, 158, 11, 0.2);
+  color: #FCD34D;
+}
+
+.treasury-metric-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 12px 0;
+  line-height: 1.2;
+}
+
+.dark-mode .treasury-metric-value {
+  color: #F9FAFB;
+}
+
+.treasury-metric-footer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #6B7280;
+}
+
+.dark-mode .treasury-metric-footer {
+  color: #9CA3AF;
+}
+
+/* Liquidity Buckets Card */
+.liquidity-buckets-card {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 24px;
+  transition: all 0.2s ease;
+}
+
+.dark-mode .liquidity-buckets-card {
+  background: #1A1A1A;
+  border-color: #333;
+}
+
+.buckets-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.dark-mode .buckets-header {
+  border-bottom-color: #333;
+}
+
+.buckets-header svg {
+  color: #6B7280;
+}
+
+.dark-mode .buckets-header svg {
+  color: #9CA3AF;
+}
+
+.buckets-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.dark-mode .buckets-header h3 {
+  color: #F9FAFB;
+}
+
+.bucket-item {
+  margin-bottom: 20px;
+}
+
+.bucket-item:last-child {
+  margin-bottom: 0;
+}
+
+.bucket-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.bucket-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.dark-mode .bucket-name {
+  color: #E5E7EB;
+}
+
+.bucket-amount {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.dark-mode .bucket-amount {
+  color: #F9FAFB;
+}
+
+.bucket-percentage {
+  font-weight: 500;
+  color: #6B7280;
+}
+
+.dark-mode .bucket-percentage {
+  color: #9CA3AF;
+}
+
+.bucket-bar {
+  height: 8px;
+  background: #F3F4F6;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.dark-mode .bucket-bar {
+  background: #2A2A2A;
+}
+
+.bucket-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.6s ease;
+}
+
+.bucket-fill.immediate {
+  background: linear-gradient(90deg, #10B981 0%, #059669 100%);
+}
+
+.bucket-fill.week {
+  background: linear-gradient(90deg, #3B82F6 0%, #2563EB 100%);
+}
+
+.bucket-fill.month {
+  background: linear-gradient(90deg, #8B5CF6 0%, #7C3AED 100%);
+}
+
+/* Cash Flow Monitoring Card */
+.cash-flow-monitoring-card {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 24px;
+  transition: all 0.2s ease;
+}
+
+.dark-mode .cash-flow-monitoring-card {
+  background: #1A1A1A;
+  border-color: #333;
+}
+
+.monitoring-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.dark-mode .monitoring-header {
+  border-bottom-color: #333;
+}
+
+.monitoring-header svg {
+  color: #6B7280;
+}
+
+.dark-mode .monitoring-header svg {
+  color: #9CA3AF;
+}
+
+.monitoring-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.dark-mode .monitoring-header h3 {
+  color: #F9FAFB;
+}
+
+.cash-flow-grid-monitoring {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.cash-flow-item {
+  padding: 16px;
+  background: #F9FAFB;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.cash-flow-item:hover {
+  border-color: #D1D5DB;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.dark-mode .cash-flow-item {
+  background: #252525;
+  border-color: #333;
+}
+
+.dark-mode .cash-flow-item:hover {
+  border-color: #444;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.cash-flow-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.flow-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #6B7280;
+}
+
+.dark-mode .flow-name {
+  color: #9CA3AF;
+}
+
+.flow-indicator {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.flow-indicator.positive {
+  color: #00A63E;
+}
+
+.flow-indicator.negative {
+  color: #DC2626;
+}
+
+.dark-mode .flow-indicator.positive {
+  color: #6EE7B7;
+}
+
+.dark-mode .flow-indicator.negative {
+  color: #FCA5A5;
+}
+
+.flow-amount {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.dark-mode .flow-amount {
+  color: #F9FAFB;
+}
+
+/* Stress Scenarios Card */
+.stress-scenarios-card {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 24px;
+  transition: all 0.2s ease;
+}
+
+.dark-mode .stress-scenarios-card {
+  background: #1A1A1A;
+  border-color: #333;
+}
+
+.scenarios-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.dark-mode .scenarios-header {
+  border-bottom-color: #333;
+}
+
+.scenarios-header svg {
+  color: #6B7280;
+}
+
+.dark-mode .scenarios-header svg {
+  color: #9CA3AF;
+}
+
+.scenarios-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.dark-mode .scenarios-header h3 {
+  color: #F9FAFB;
+}
+
+.scenarios-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.scenario-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.scenario-bullet {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.scenario-bullet.mild {
+  background: #10B981;
+}
+
+.scenario-bullet.moderate {
+  background: #F59E0B;
+}
+
+.scenario-bullet.severe {
+  background: #EF4444;
+}
+
+.scenario-text {
+  font-size: 14px;
+  color: #4B5563;
+  line-height: 1.6;
+}
+
+.dark-mode .scenario-text {
+  color: #D1D5DB;
+}
+
+.scenario-text strong {
+  color: #111827;
+  font-weight: 600;
+}
+
+.dark-mode .scenario-text strong {
+  color: #F9FAFB;
+}
+
+/* Quick Access Card */
+.quick-access-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
+  padding: 24px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.dark-mode .quick-access-card {
+  background: #1E293B;
+  border-color: rgba(148, 163, 184, 0.15);
+}
+
+.quick-access-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 20px 0;
+  letter-spacing: -0.01em;
+}
+
+.dark-mode .quick-access-card h3 {
+  color: #F9FAFB;
+}
+
+.quick-access-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.quick-access-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  color: #6B7280;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+}
+
+.quick-access-item:hover {
+  background: #F3F4F6;
+  color: #111827;
+}
+
+.quick-access-item:hover svg {
+  stroke: #155DFC;
+}
+
+.quick-access-item.active {
+  background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+  color: #155DFC;
+  font-weight: 600;
+}
+
+.quick-access-item.active svg {
+  stroke: #155DFC;
+}
+
+.dark-mode .quick-access-item {
+  color: #94A3B8;
+}
+
+.dark-mode .quick-access-item:hover {
+  background: #0F172A;
+  color: #F9FAFB;
+}
+
+.dark-mode .quick-access-item:hover svg {
+  stroke: #60A5FA;
+}
+
+.dark-mode .quick-access-item.active {
+  background: linear-gradient(135deg, rgba(21, 93, 252, 0.15) 0%, rgba(21, 93, 252, 0.1) 100%);
+  color: #60A5FA;
+}
+
+.dark-mode .quick-access-item.active svg {
+  stroke: #60A5FA;
+}
+
+.dark-mode .quick-access-item svg {
+  stroke: #94A3B8;
+}
+
+.quick-access-item svg {
+  flex-shrink: 0;
+  stroke: #6B7280;
+  transition: stroke 0.2s ease;
+}
+
+.quick-access-item span {
+  line-height: 1.4;
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+  .treasury-main-grid {
+    grid-template-columns: 1fr 350px;
+  }
+  
+  .cash-flow-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cash-flow-grid-monitoring {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 1200px) {
+  .treasury-liquidity-main {
+    margin-left: 0;
+  }
+
+  .treasury-main-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .treasury-right-col {
+    position: static;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .treasury-liquidity-content {
+    padding: 16px;
+  }
+
+  .treasury-page-header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .export-report-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .cash-flow-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cash-flow-grid-monitoring {
+    grid-template-columns: 1fr;
+  }
+
+  .liquidity-status-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .treasury-page-header h1 {
+    font-size: 24px;
+  }
+
+  .treasury-metric-value {
+    font-size: 24px;
+  }
+
+  .flow-amount {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .back-button {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .treasury-breadcrumb {
+    font-size: 12px;
+  }
+
+  .treasury-page-header h1 {
+    font-size: 20px;
+  }
+
+  .treasury-page-header p {
+    font-size: 14px;
+  }
+
+  .liquidity-main-info h2 {
+    font-size: 22px;
+  }
+
+  .treasury-metric-value {
+    font-size: 20px;
+  }
+}

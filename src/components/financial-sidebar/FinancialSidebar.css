@@ -309,3 +309,94 @@
   outline-color: #60a5fa;
 }
 
+/* Component-specific dark mode styles - FORCED UPDATE */
+.financial-sidebar.dark-mode {
+  background: #1e293b !important;
+  border-right-color: #334155 !important;
+  color: #f8fafc;
+}
+
+.financial-sidebar.dark-mode .financial-sidebar-header {
+  border-bottom-color: #334155;
+}
+
+.financial-sidebar.dark-mode .back-button {
+  color: #94a3b8;
+}
+
+.financial-sidebar.dark-mode .back-button:hover {
+  color: #f8fafc;
+}
+
+.financial-sidebar.dark-mode .back-button svg path {
+  stroke: #94a3b8;
+}
+
+.financial-sidebar.dark-mode .back-button:hover svg path {
+  stroke: #f8fafc;
+}
+
+.financial-sidebar.dark-mode .financial-sidebar-title {
+  border-bottom-color: #334155;
+}
+
+.financial-sidebar.dark-mode .financial-sidebar-title h2 {
+  color: #f8fafc;
+}
+
+.financial-sidebar.dark-mode .financial-sidebar-title p {
+  color: #94a3b8;
+}
+
+.financial-sidebar.dark-mode .financial-nav-item {
+  color: #94a3b8;
+}
+
+.financial-sidebar.dark-mode .financial-nav-item:hover {
+  background: #334155;
+  color: #f8fafc;
+}
+
+.financial-sidebar.dark-mode .financial-nav-item.active {
+  background: #475569;
+  color: #f8fafc;
+}
+
+.financial-sidebar.dark-mode .financial-nav-item.active:hover {
+  background: #64748b;
+}
+
+.financial-sidebar.dark-mode .financial-nav-item svg path {
+  stroke: #94a3b8;
+}
+
+.financial-sidebar.dark-mode .financial-nav-item:hover svg path,
+.financial-sidebar.dark-mode .financial-nav-item.active svg path {
+  stroke: #f8fafc;
+}
+
+.financial-sidebar.dark-mode .financial-sidebar-account {
+  border-top-color: #334155;
+}
+
+.financial-sidebar.dark-mode .account-title {
+  color: #64748b;
+}
+
+.financial-sidebar.dark-mode .logout-button {
+  color: #cbd5e1;
+}
+
+.financial-sidebar.dark-mode .logout-button:hover {
+  background: rgba(148, 163, 184, 0.1);
+}
+
+.financial-sidebar.dark-mode .logout-button svg path {
+  stroke: #cbd5e1;
+}
+
+.financial-sidebar.dark-mode .back-button:focus-visible,
+.financial-sidebar.dark-mode .financial-nav-item:focus-visible,
+.financial-sidebar.dark-mode .logout-button:focus-visible {
+  outline-color: #60a5fa;
+}

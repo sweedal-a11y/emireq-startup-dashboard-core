@@ -31,7 +31,7 @@ export default function FinancialCorePage() {
 
   return (
     <div className={`financial-core-page ${isDarkMode ? 'dark-mode' : ''}`}>
-      <FinancialSidebar onLogout={handleLogoutClick} />
+      <FinancialSidebar onLogout={handleLogoutClick} isDarkMode={isDarkMode} />
       <div className="financial-core-main">
         <Header isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
         <main className="financial-core-content">
@@ -483,7 +483,7 @@ export default function FinancialCorePage() {
                       <span>Core Financial Overview</span>
                     </button>
                     
-                    <button className="quick-access-item">
+                    <button className="quick-access-item" onClick={() => navigate('/financial-core/treasury-liquidity')}>
                       <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                         <rect x="2" y="2" width="6" height="6" rx="1" stroke="#6B7280" strokeWidth="1.5"/>
                         <rect x="10" y="2" width="6" height="6" rx="1" stroke="#6B7280" strokeWidth="1.5"/>
