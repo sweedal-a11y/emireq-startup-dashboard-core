@@ -2,9 +2,14 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./FinancialSidebar.css";
 
-export default function FinancialSidebar({ onLogout, isDarkMode }) {
+export default function FinancialSidebar({ onLogout, isDarkMode, activePage = "dashboard" }) {
   const navigate = useNavigate();
-  const [activeItem, setActiveItem] = useState("dashboard");
+  const [activeItem, setActiveItem] = useState(activePage);
+
+  // Update active item when activePage prop changes
+  React.useEffect(() => {
+    setActiveItem(activePage);
+  }, [activePage]);
 
   const handleBackToMain = () => {
     navigate("/overview");
@@ -12,7 +17,13 @@ export default function FinancialSidebar({ onLogout, isDarkMode }) {
 
   const handleItemClick = (itemId) => {
     setActiveItem(itemId);
-    // Add navigation logic here when routes are available
+    // Navigate to the appropriate route
+    if (itemId === 'transactions') {
+      navigate('/financial-core/transactions');
+    } else if (itemId === 'dashboard') {
+      navigate('/financial-core');
+    }
+    // Add more navigation logic for other pages as needed
   };
 
   const menuItems = [

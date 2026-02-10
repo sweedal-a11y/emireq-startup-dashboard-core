@@ -10,6 +10,7 @@ import FundingProgressPage from "./pages/funding/FundingProgressPage";
 import FinancialCorePage from "./pages/financial-core/FinancialCorePage";
 import CoreFinancialOverview from "./pages/financial-core/CoreFinancialOverview";
 import TreasuryLiquidityManagement from "./pages/financial-core/TreasuryLiquidityManagement";
+import TransactionsPage from "./pages/financial-core/TransactionsPage";
 import MessagesPage from "./pages/messages/MessagesPage";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
@@ -145,6 +146,7 @@ function AppContent() {
           <Route path="/financial-core" element={<FinancialCorePage />} />
           <Route path="/financial-core/overview" element={<CoreFinancialOverview />} />
           <Route path="/financial-core/treasury-liquidity" element={<TreasuryLiquidityManagement />} />
+          <Route path="/financial-core/transactions" element={<TransactionsPage />} />
           <Route path="/messages" element={<MessagesPage toggleTheme={toggleTheme} sidebarCollapsed={sidebarCollapsed} />} />
           <Route path="/documents" element={<DocumentsPage toggleTheme={toggleTheme} sidebarCollapsed={sidebarCollapsed} />} />
           <Route path="/auth/login" element={<Login />} />
