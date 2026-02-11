@@ -29,6 +29,44 @@ export default function FinancialCorePage() {
     navigate("/auth/login");
   };
 
+  const transactions = [
+    {
+      id: 1,
+      name: "Stripe Settlement",
+      date: "Today, 10:23 AM",
+      amount: "+$1,200.50",
+      status: "incoming",
+    },
+    {
+      id: 2,
+      name: "AWS Service Charge",
+      date: "Yesterday, 4:00 PM",
+      amount: "-$240.00",
+      status: "outgoing",
+    },
+    {
+      id: 3,
+      name: "Shopify Sales",
+      date: "Jun 24, 2024",
+      amount: "+$2,100.25",
+      status: "incoming",
+    },
+    {
+      id: 4,
+      name: "Gusto Payroll",
+      date: "Jun 23, 2024",
+      amount: "-$8,500.00",
+      status: "outgoing",
+    },
+    {
+      id: 5,
+      name: "Slack Subscription",
+      date: "Jun 22, 2024",
+      amount: "-$145.00",
+      status: "outgoing",
+    }
+  ];
+
   return (
     <div className={`financial-core-page ${isDarkMode ? 'dark-mode' : ''}`}>
       <FinancialSidebar onLogout={handleLogoutClick} isDarkMode={isDarkMode} />
@@ -66,106 +104,106 @@ export default function FinancialCorePage() {
             <div className="financial-main-grid">
               {/* Left Column - Metrics & Charts */}
               <div className="financial-left-col">
-                {/* Metrics Cards */}
+                {/* metrics-grid */}
                 <div className="metrics-grid">
-                  <div className="metric-card cash-card">
-                    <div className="metric-icon-wrapper">
-                      <div className="metric-icon cash">
-                       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M10 1.66669V18.3334" stroke="#00A63E" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M14.1667 4.16669H7.91667C7.14312 4.16669 6.40125 4.47398 5.85427 5.02096C5.30729 5.56794 5 6.30981 5 7.08335C5 7.8569 5.30729 8.59877 5.85427 9.14575C6.40125 9.69273 7.14312 10 7.91667 10H12.0833C12.8569 10 13.5987 10.3073 14.1457 10.8543C14.6927 11.4013 15 12.1431 15 12.9167C15 13.6902 14.6927 14.4321 14.1457 14.9791C13.5987 15.5261 12.8569 15.8334 12.0833 15.8334H5" stroke="#00A63E" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                  {/* Card 1: Cash Balance */}
+                  <div className="metric-card">
+                    <div className="metric-header">
+                      <div className="metric-icon-wrapper green">
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M10 1.66602V18.3327" stroke="#00A63E" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M14.1667 4.16602H7.91667C7.14312 4.16602 6.40125 4.47331 5.85427 5.02029C5.30729 5.56727 5 6.30913 5 7.08268C5 7.85623 5.30729 8.5981 5.85427 9.14508C6.40125 9.69206 7.14312 9.99935 7.91667 9.99935H12.0833C12.8569 9.99935 13.5987 10.3066 14.1457 10.8536C14.6927 11.4006 15 12.1425 15 12.916C15 13.6896 14.6927 14.4314 14.1457 14.9784C13.5987 15.5254 12.8569 15.8327 12.0833 15.8327H5" stroke="#00A63E" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
 
                       </div>
-                      <div className="metric-change positive">
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M10.6666 4.66669H14.6666V8.66669" stroke="#00A63E" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M14.6667 4.66669L9.00004 10.3334L5.66671 7.00002L1.33337 11.3334" stroke="#00A63E" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
+                      <div className="metric-trend positive">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M12.254 6.4668H16.254V10.4668" stroke="#00A63E" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round"/>
+                          <path d="M16.254 6.4668L10.587 12.1335L7.254 8.8001L2.921 13.1335" stroke="#00A63E" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
                         <span>+12.5%</span>
                       </div>
                     </div>
                     <div className="metric-content">
-                      <h3 className="metric-label">Cash Balance</h3>
-                      <div className="metric-value">$342,500</div>
+                      <p className="metric-title">Cash Balance</p>
+                      <h3 className="metric-value">$342,500</h3>
                       <p className="metric-subtitle">Available funds</p>
                     </div>
                   </div>
 
-                  <div className="metric-card burn-card">
-                    <div className="metric-icon-wrapper">
-                      <div className="metric-icon burn">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M13.3334 14.1667H18.3334V9.16669" stroke="#155DFC" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M18.3333 14.1666L11.25 7.08331L7.08329 11.25L1.66663 5.83331" stroke="#155DFC" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                  {/* Card 2: Monthly Burn */}
+                  <div className="metric-card">
+                    <div className="metric-header">
+                      <div className="metric-icon-wrapper blue">
+                       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.3333 14.166H18.3333V9.16602" stroke="#155DFC" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M18.3334 14.1673L11.2501 7.08398L7.08341 11.2507L1.66675 5.83398" stroke="#155DFC" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
 
                       </div>
-                      <div className="metric-change negative">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M5.33337 11.3334H1.33337V7.33335" stroke="#00A63E" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M1.33337 11.3334L7.00004 5.66669L10.3334 9.00002L14.6667 4.66669" stroke="#00A63E" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
-                        <span>-8.2%</span>
+                      <div className="metric-trend positive">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M12.917 6.4668H16.917V10.4668" stroke="#00A63E" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round"/>
+                          <path d="M16.917 6.4668L11.25 12.1335L7.917 8.8001L3.583 13.1335" stroke="#00A63E" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                        <span style={{color: '#00A63E'}}>-8.2%</span>
                       </div>
                     </div>
                     <div className="metric-content">
-                      <h3 className="metric-label">Monthly Burn</h3>
-                      <div className="metric-value">$48,000</div>
+                      <p className="metric-title">Monthly Burn</p>
+                      <h3 className="metric-value">$48,000</h3>
                       <p className="metric-subtitle">Avg. monthly spend</p>
                     </div>
                   </div>
 
-                  <div className="metric-card runway-card">
-                    <div className="metric-icon-wrapper">
-                      <div className="metric-icon runway">
+                  {/* Card 3: Runway */}
+                  <div className="metric-card">
+                    <div className="metric-header">
+                      <div className="metric-icon-wrapper purple">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M6.66663 1.66669V5.00002" stroke="#9810FA" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M13.3334 1.66669V5.00002" stroke="#9810FA" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M15.8333 3.33331H4.16667C3.24619 3.33331 2.5 4.07951 2.5 4.99998V16.6666C2.5 17.5871 3.24619 18.3333 4.16667 18.3333H15.8333C16.7538 18.3333 17.5 17.5871 17.5 16.6666V4.99998C17.5 4.07951 16.7538 3.33331 15.8333 3.33331Z" stroke="#9810FA" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M2.5 8.33331H17.5" stroke="#9810FA" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M6.66675 1.66602V4.99935" stroke="#9810FA" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M13.3333 1.66602V4.99935" stroke="#9810FA" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.8333 3.33398H4.16667C3.24619 3.33398 2.5 4.08018 2.5 5.00065V16.6673C2.5 17.5878 3.24619 18.334 4.16667 18.334H15.8333C16.7538 18.334 17.5 17.5878 17.5 16.6673V5.00065C17.5 4.08018 16.7538 3.33398 15.8333 3.33398Z" stroke="#9810FA" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M2.5 8.33398H17.5" stroke="#9810FA" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
 
                       </div>
-                      <div className="metric-change positive">
-                       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M10.6666 4.66669H14.6666V8.66669" stroke="#00A63E" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M14.6667 4.66669L9.00004 10.3334L5.66671 7.00002L1.33337 11.3334" stroke="#00A63E" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
+                      <div className="metric-trend positive">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M12.567 6.055H16.567V10.055" stroke="#00A63E" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round"/>
+                          <path d="M16.567 6.055L10.9 11.721L7.567 8.388L3.233 12.721" stroke="#00A63E" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
                         <span>+0.4 mo</span>
                       </div>
                     </div>
                     <div className="metric-content">
-                      <h3 className="metric-label">Runway</h3>
-                      <div className="metric-value">7.1 months</div>
+                      <p className="metric-title">Runway</p>
+                      <h3 className="metric-value">7.1 months</h3>
                       <p className="metric-subtitle">At current burn</p>
                     </div>
                   </div>
 
-                  <div className="metric-card revenue-card">
-                    <div className="metric-icon-wrapper">
-                      <div className="metric-icon revenue">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M13.3334 5.83331H18.3334V10.8333" stroke="#F54900" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M18.3333 5.83331L11.25 12.9166L7.08329 8.74998L1.66663 14.1666" stroke="#F54900" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                  {/* Card 4: Monthly Revenue */}
+                  <div className="metric-card">
+                    <div className="metric-header">
+                      <div className="metric-icon-wrapper orange">
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.3333 5.83398H18.3333V10.834" stroke="#F54900" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M18.3334 5.83398L11.2501 12.9173L7.08341 8.75065L1.66675 14.1673" stroke="#F54900" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
 
                       </div>
-                      <div className="metric-change positive">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M10.6666 4.66669H14.6666V8.66669" stroke="#00A63E" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M14.6667 4.66669L9.00004 10.3334L5.66671 7.00002L1.33337 11.3334" stroke="#00A63E" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
+                      <div className="metric-trend positive">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M12.204 6.055H16.204V10.055" stroke="#00A63E" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round"/>
+                          <path d="M16.204 6.055L10.538 11.721L7.204 8.388L2.871 12.721" stroke="#00A63E" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
                         <span>+15.3%</span>
                       </div>
                     </div>
                     <div className="metric-content">
-                      <h3 className="metric-label">Monthly Revenue</h3>
-                      <div className="metric-value">$67,000</div>
+                      <p className="metric-title">Monthly Revenue</p>
+                      <h3 className="metric-value">$67,000</h3>
                       <p className="metric-subtitle">Current month</p>
                     </div>
                   </div>
@@ -343,70 +381,39 @@ export default function FinancialCorePage() {
                   <div className="activity-header">
                     <div className="activity-title-wrapper">
                       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M18.3333 10.0001H16.2666C15.9024 9.9993 15.548 10.1178 15.2576 10.3376C14.9671 10.5573 14.7566 10.8661 14.6583 11.2167L12.7 18.1834C12.6873 18.2267 12.661 18.2647 12.625 18.2917C12.5889 18.3188 12.545 18.3334 12.5 18.3334C12.4549 18.3334 12.411 18.3188 12.375 18.2917C12.3389 18.2647 12.3126 18.2267 12.3 18.1834L7.69996 1.81675C7.68734 1.77347 7.66102 1.73546 7.62496 1.70841C7.5889 1.68137 7.54504 1.66675 7.49996 1.66675C7.45488 1.66675 7.41102 1.68137 7.37496 1.70841C7.3389 1.73546 7.31258 1.77347 7.29996 1.81675L5.34163 8.78341C5.24368 9.13271 5.03444 9.44051 4.74568 9.66009C4.45691 9.87967 4.10439 9.99904 3.74163 10.0001H1.66663" stroke="#155DFC" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
+                        <path d="M18.3333 10.0001H16.2666C15.9024 9.9993 15.548 10.1178 15.2576 10.3376C14.9671 10.5573 14.7566 10.8661 14.6583 11.2167L12.7 18.1834C12.6873 18.2267 12.661 18.2647 12.625 18.2917C12.5889 18.3188 12.545 18.3334 12.5 18.3334C12.4549 18.3334 12.411 18.3188 12.375 18.2917C12.3389 18.2647 12.3126 18.2267 12.3 18.1834L7.69996 1.81675C7.68734 1.77347 7.66102 1.73546 7.62496 1.70841C7.5889 1.68137 7.54504 1.66675 7.49996 1.66675C7.45488 1.66675 7.41102 1.68137 7.37496 1.70841C7.3389 1.73546 7.31258 1.77347 7.29996 1.81675L5.34163 8.78341C5.24368 9.13271 5.03444 9.44051 4.74568 9.66009C4.45691 9.87967 4.10439 9.99904 3.74163 10.0001H1.66663" stroke="#155DFC" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
                       <h3>Recent Financial Activity</h3>
                     </div>
                     <button className="view-all-btn-activity">View All</button>
                   </div>
-                  
                   <div className="activity-list">
-                    <div className="activity-item">
-                      <div className="activity-icon-wrapper positive">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M5.33337 4.66669H10.6667V9.99998" stroke="#00A63E" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round"/>
-                          <path d="M10.6667 4.66669L5.33337 10" stroke="#00A63E" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </div>
-                      <div className="activity-details">
-                        <h4>Customer payment received</h4>
-                        <p>2 hours ago</p>
-                      </div>
-                      <div className="activity-amount positive">+$12,500</div>
-                    </div>
+                    {transactions.map((tx) => (
+                      <div key={tx.id} className="activity-item">
+                        <div className={`activity-icon-wrapper ${tx.status}`}>
+                          {tx.status === 'incoming' ? (
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4.66675 4.66602L11.3334 11.3327" stroke="#00A63E" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M11.3334 4.66602V11.3327H4.66675" stroke="#00A63E" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
 
-                    <div className="activity-item">
-                      <div className="activity-icon-wrapper negative">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M10.6666 11.3334H5.33329V6.00002" stroke="#E7000B" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round"/>
-                          <path d="M5.33329 11.3334L10.6666 6.00002" stroke="#E7000B" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </div>
-                      <div className="activity-details">
-                        <h4>Cloud infrastructure (AWS)</h4>
-                        <p>5 hours ago</p>
-                      </div>
-                      <div className="activity-amount negative">−$2,340</div>
-                    </div>
+                          ) : (
+                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4.66675 4.66602H11.3334V11.3327" stroke="#E7000B" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M4.66675 11.3327L11.3334 4.66602" stroke="#E7000B" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
 
-                    <div className="activity-item">
-                      <div className="activity-icon-wrapper positive">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M5.33337 4.66669H10.6667V9.99998" stroke="#00A63E" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round"/>
-                          <path d="M10.6667 4.66669L5.33337 10" stroke="#00A63E" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
+                          )}
+                        </div>
+                        <div className="activity-details">
+                          <h4>{tx.name}</h4>
+                          <p>{tx.date}</p>
+                        </div>
+                        <div className={`activity-amount ${tx.status}`}>
+                          {tx.amount}
+                        </div>
                       </div>
-                      <div className="activity-details">
-                        <h4>Investor funding tranche 2</h4>
-                        <p>1 day ago</p>
-                      </div>
-                      <div className="activity-amount positive">+$150,000</div>
-                    </div>
-
-                    <div className="activity-item">
-                      <div className="activity-icon-wrapper negative">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M10.6666 11.3334H5.33329V6.00002" stroke="#E7000B" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round"/>
-                          <path d="M5.33329 11.3334L10.6666 6.00002" stroke="#E7000B" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </div>
-                      <div className="activity-details">
-                        <h4>Payroll – June 2026</h4>
-                        <p>2 days ago</p>
-                      </div>
-                      <div className="activity-amount negative">−$28,500</div>
-                    </div>
+                    ))}
                   </div>
                 </div>
 

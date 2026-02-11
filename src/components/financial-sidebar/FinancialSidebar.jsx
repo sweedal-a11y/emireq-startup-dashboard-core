@@ -22,6 +22,8 @@ export default function FinancialSidebar({ onLogout, isDarkMode, activePage = "d
       navigate('/financial-core/transactions');
     } else if (itemId === 'dashboard') {
       navigate('/financial-core');
+    } else if (itemId === 'sales') {
+      navigate('/financial-core/sales');
     }
     // Add more navigation logic for other pages as needed
   };
