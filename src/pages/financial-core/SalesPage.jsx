@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import FinancialSidebar from '../../components/financial-sidebar/FinancialSidebar';
 import Header from './Header';
 import LogoutConfirmModal from '../../components/logout-modal/LogoutConfirmModal';
 import './SalesPage.css';
 
 export default function SalesPage() {
+  const navigate = useNavigate();
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [activeTab, setActiveTab] = useState('overview');
