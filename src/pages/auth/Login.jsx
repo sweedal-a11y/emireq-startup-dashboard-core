@@ -42,7 +42,7 @@ const Login = () => {
     if (!isValid) return;
 
     const payload = {
-      username: username,
+      email: username,
       password: password,
     };
     const response = await loginStartup(STARTUP_LOGIN, payload);
