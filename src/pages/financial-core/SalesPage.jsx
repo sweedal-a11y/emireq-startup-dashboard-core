@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import FinancialSidebar from '../../components/financial-sidebar/FinancialSidebar';
 import Header from './Header';
 import LogoutConfirmModal from '../../components/logout-modal/LogoutConfirmModal';
+import CustomerListView from './CustomerListView';
+import CustomerDetailView from './CustomerDetailView';
 import './SalesPage.css';
 
 export default function SalesPage() {
@@ -10,6 +12,7 @@ export default function SalesPage() {
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [activeTab, setActiveTab] = useState('overview');
+  const [selectedCustomer, setSelectedCustomer] = useState(null);
   const [enterpriseControls, setEnterpriseControls] = useState({
     creditLimit: false,
     autoPayment: false,
@@ -42,6 +45,14 @@ export default function SalesPage() {
       ...prev,
       [controlName]: !prev[controlName]
     }));
+  };
+
+  const handleSelectCustomer = (customer) => {
+    setSelectedCustomer(customer);
+  };
+
+  const handleBackToCustomers = () => {
+    setSelectedCustomer(null);
   };
 
   const tabs = [
@@ -129,24 +140,54 @@ export default function SalesPage() {
         <Header isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
         <main className="sales-content">
           <div className="sales-container">
-            {/* Page Header */}
-            <div className="sales-page-header">
-              <h1>Sales (Accounts Receivable)</h1>
-              <p>Real-time accounts receivable monitoring and management</p>
-            </div>
+            {/* Page Header - Hidden on Customers tab */}
+            {activeTab !== 'customers' && (
+              <div className="sales-page-header">
+                <h1>Sales (Accounts Receivable)</h1>
+                <p>Real-time accounts receivable monitoring and management</p>
+              </div>
+            )}
 
-            {/* Tabs */}
-            <div className="sales-tabs">
-              {tabs.map(tab => (
-                <button
-                  key={tab.id}
-                  className={`sales-tab ${activeTab === tab.id ? 'active' : ''}`}
-                  onClick={() => setActiveTab(tab.id)}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
+            {/* Tabs - Hidden on Customers tab (rendered inside CustomerListView) */}
+            {activeTab !== 'customers' && (
+              <div className="sales-tabs">
+                {tabs.map(tab => (
+                  <button
+                    key={tab.id}
+                    className={`sales-tab ${activeTab === tab.id ? 'active' : ''}`}
+                    onClick={() => {
+                      setActiveTab(tab.id);
+                      setSelectedCustomer(null);
+                    }}
+                  >
+                    {tab.label}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {/* Conditional rendering based on activeTab */}
+            {activeTab === 'customers' ? (
+              selectedCustomer ? (
+                <CustomerDetailView 
+                  customer={selectedCustomer} 
+                  onBack={handleBackToCustomers}
+                  isDarkMode={isDarkMode}
+                />
+              ) : (
+                <CustomerListView 
+                  onSelectCustomer={handleSelectCustomer}
+                  isDarkMode={isDarkMode}
+                  tabs={tabs}
+                  activeTab={activeTab}
+                  onTabChange={(tabId) => {
+                    setActiveTab(tabId);
+                    setSelectedCustomer(null);
+                  }}
+                />
+              )
+            ) : (
+              <>
 
             {/* Metrics Cards */}
             <div className="sales-metrics-grid">
@@ -550,6 +591,8 @@ export default function SalesPage() {
                 </div>
               </div>
             </div>
+              </>
+            )}
           </div>
         </main>
       </div>

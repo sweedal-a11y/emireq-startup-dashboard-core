@@ -5,10 +5,30 @@
   width: 100%;
   overflow-x: hidden;
   transition: all 0.3s ease;
+  
+  /* CSS Variables for theming */
+  --bg-primary: #F9FAFB;
+  --bg-card: #FFFFFF;
+  --bg-secondary: #F3F4F6;
+  --bg-hover: #F9FAFB;
+  --text-primary: #121212;
+  --text-secondary: #4A5565;
+  --border-color: #E5E7EB;
+  --border-hover: #D1D5DB;
 }
 
 .sales-page.dark-mode {
   background: #1A1D29;
+  
+  /* Dark mode CSS Variables */
+  --bg-primary: #1A1D29;
+  --bg-card: #1E1E1E;
+  --bg-secondary: #252525;
+  --bg-hover: #2A2A2A;
+  --text-primary: #FFFFFF;
+  --text-secondary: #A0A0A0;
+  --border-color: #333333;
+  --border-hover: #444444;
 }
 
 .sales-main {
@@ -69,7 +89,7 @@
   flex: 1;
   padding: 8px 16px;
   background: #FFFFFF;
-  border: none;
+  border: none !important;
   border-radius: 23px;
   font-size: 14px;
   font-weight: 500;
@@ -82,17 +102,41 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  outline: none !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+}
+
+.sales-tab::before,
+.sales-tab::after {
+  display: none !important;
+}
+
+.sales-tab:focus,
+.sales-tab:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
 }
 
 .sales-tab:hover {
   background: rgba(21, 93, 252, 0.05);
   color: #155DFC;
+  border: none !important;
+  outline: none !important;
 }
 
 .sales-tab.active {
   background: rgba(21, 93, 252, 0.08);
   color: #155DFC;
   font-weight: 500;
+  border: none !important;
+  outline: none !important;
+}
+
+.sales-tab.active::before,
+.sales-tab.active::after {
+  display: none !important;
 }
 
 /* Metrics Grid - All 5 cards in one row */

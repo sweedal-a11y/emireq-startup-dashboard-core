@@ -18,7 +18,7 @@
 
 /* Header Section */
 .financial-sidebar-header {
-  padding: 27px;
+  padding: 16px 20px;
   border-bottom: 1px solid #e5e7eb;
 }
 
@@ -26,11 +26,11 @@
   all: unset;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
-  color: #374151;
+  color: #4A5565;
   transition: color 0.2s ease;
   width: 100%;
 }

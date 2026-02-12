@@ -325,7 +325,7 @@ export default function TransactionsPage() {
             <div className="transactions-page-header">
               <div className="page-header-left">
                 <h1>Financial Core</h1>
-                <p>Real-time financial intelligence and compliance monitoring</p>
+                <p>Manage and track all your financial transactions and journal entries</p>
               </div>
               <div className="page-header-actions">
                 <button className="btn-secondary" onClick={handleExport}>
@@ -378,16 +378,18 @@ export default function TransactionsPage() {
             {activeTab === 'all' && (
             <div className="transactions-section">
               <div className="section-header">
-                <div className="section-title">
-                  <h2>Transactions</h2>
-                  <button className="info-icon" title="Manage and track all your financial transactions and journal entries">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="9.89191" cy="9.89203" r="7.91351" fill="#AFAFAF"/>
-                      <path fillRule="evenodd" clipRule="evenodd" d="M11.1825 7.16424C11.3062 6.94785 11.3757 6.69669 11.3757 6.43007C11.3757 5.6109 10.7111 4.94629 9.89195 4.94629C9.07278 4.94629 8.40817 5.6109 8.40817 6.43007C8.40817 7.24925 9.07278 7.91386 9.89195 7.91386C10.4445 7.91386 10.9275 7.61246 11.1825 7.16424ZM8.90276 8.90305H9.39736H10.3865C10.9333 8.90305 11.3757 9.34548 11.3757 9.89223V10.8814V14.8382C11.3757 15.3849 10.9333 15.8274 10.3865 15.8274C9.83979 15.8274 9.39736 15.3849 9.39736 14.8382V11.6233C9.39736 11.2137 9.06505 10.8814 8.65547 10.8814C8.24588 10.8814 7.91357 10.5491 7.91357 10.1395V9.89223C7.91357 9.54447 8.09325 9.23728 8.36373 9.06147C8.51829 8.96101 8.70377 8.90305 8.90276 8.90305Z" fill="white"/>
-                    </svg>
-                  </button>
+                <div className="section-header-left">
+                  <div className="section-title">
+                    <h2>Transactions</h2>
+                    <button className="info-icon" title="Manage and track all your financial transactions and journal entries">
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="9.89191" cy="9.89203" r="7.91351" fill="#AFAFAF"/>
+                        <path fillRule="evenodd" clipRule="evenodd" d="M11.1825 7.16424C11.3062 6.94785 11.3757 6.69669 11.3757 6.43007C11.3757 5.6109 10.7111 4.94629 9.89195 4.94629C9.07278 4.94629 8.40817 5.6109 8.40817 6.43007C8.40817 7.24925 9.07278 7.91386 9.89195 7.91386C10.4445 7.91386 10.9275 7.61246 11.1825 7.16424ZM8.90276 8.90305H9.39736H10.3865C10.9333 8.90305 11.3757 9.34548 11.3757 9.89223V10.8814V14.8382C11.3757 15.3849 10.9333 15.8274 10.3865 15.8274C9.83979 15.8274 9.39736 15.3849 9.39736 14.8382V11.6233C9.39736 11.2137 9.06505 10.8814 8.65547 10.8814C8.24588 10.8814 7.91357 10.5491 7.91357 10.1395V9.89223C7.91357 9.54447 8.09325 9.23728 8.36373 9.06147C8.51829 8.96101 8.70377 8.90305 8.90276 8.90305Z" fill="white"/>
+                      </svg>
+                    </button>
+                  </div>
+                  <p className="section-description">Manage and track all your financial transactions and journal entries</p>
                 </div>
-                <p className="section-description">Manage and track all your financial transactions and journal entries</p>
               </div>
 
               {/* Filters */}
