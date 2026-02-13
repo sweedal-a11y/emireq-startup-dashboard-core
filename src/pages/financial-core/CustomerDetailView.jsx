@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import './CustomerDetailView.css';
 
+const getInitials = (name = '') => {
+  const parts = name.trim().split(/\s+/);
+  if (!parts.length) return '';
+  return parts.map((part) => part[0]).join('').slice(0, 2).toUpperCase();
+};
+
 export default function CustomerDetailView({ customer, onBack, isDarkMode }) {
-  const [activeTab, setActiveTab] = useState('invoices');
+  const [activeTab, setActiveTab] = useState('overview');
 
   const tabs = [
     { id: 'overview', label: 'Overview' },
@@ -46,10 +52,10 @@ export default function CustomerDetailView({ customer, onBack, isDarkMode }) {
       type: 'payment',
       icon: 'dollar',
       title: 'Payment Received',
-      description: 'Payment of $40,000 received for Acme Corporation',
+      description: 'Payment of $40,000 recorded for Acme Corporation',
       user: 'System',
       timestamp: '2026-02-02',
-      time: '10:07 AM'
+      time: '10:30 AM'
     },
     {
       id: 2,
@@ -57,19 +63,19 @@ export default function CustomerDetailView({ customer, onBack, isDarkMode }) {
       icon: 'file',
       title: 'Invoice Sent',
       description: 'Invoice sent to billing@acme.com',
-      user: 'John Baach',
+      user: 'John Smith',
       timestamp: '2026-02-01',
-      time: '02:10 PM'
+      time: '02:15 PM'
     },
     {
       id: 3,
       type: 'update',
       icon: 'edit',
       title: 'Customer Updated',
-      description: 'Credit limit increased to $400,000',
+      description: 'Credit limit increased to $500,000',
       user: 'Sarah Johnson',
       timestamp: '2026-01-30',
-      time: '11:40 AM'
+      time: '11:45 AM'
     },
     {
       id: 4,
@@ -79,7 +85,7 @@ export default function CustomerDetailView({ customer, onBack, isDarkMode }) {
       description: 'Automated reminder sent for overdue invoice',
       user: 'System',
       timestamp: '2026-01-28',
-      time: '09:30 AM'
+      time: '09:20 AM'
     },
     {
       id: 5,
@@ -87,9 +93,9 @@ export default function CustomerDetailView({ customer, onBack, isDarkMode }) {
       icon: 'file',
       title: 'Invoice Created',
       description: 'New invoice created for $75,000',
-      user: 'John Baach',
+      user: 'John Smith',
       timestamp: '2026-01-25',
-      time: '03:59 PM'
+      time: '03:30 PM'
     },
     {
       id: 6,
@@ -97,9 +103,9 @@ export default function CustomerDetailView({ customer, onBack, isDarkMode }) {
       icon: 'note',
       title: 'Customer Note Added',
       description: 'Preferred payment method: Wire Transfer',
-      user: 'John Baach',
+      user: 'John Smith',
       timestamp: '2026-01-20',
-      time: '03:04 PM'
+      time: '01:00 PM'
     }
   ];
 
@@ -393,11 +399,17 @@ export default function CustomerDetailView({ customer, onBack, isDarkMode }) {
                   <p className="section-subtitle">Recent activities and changes for this customer</p>
                 </div>
                 <button className="btn-secondary">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M2 4.66667H14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M4 8H12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M6.66666 11.3333H9.33332" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
+                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_272_1925)">
+<path d="M6.66708 13.3333C6.66702 13.4572 6.70148 13.5787 6.7666 13.6841C6.83172 13.7895 6.92492 13.8746 7.03574 13.93L8.36908 14.5967C8.47074 14.6475 8.58371 14.6714 8.69724 14.6663C8.81077 14.6612 8.92111 14.6271 9.01776 14.5673C9.11442 14.5075 9.19419 14.424 9.24949 14.3247C9.30479 14.2254 9.3338 14.1137 9.33374 14V9.33333C9.33389 9.00292 9.45672 8.68433 9.67841 8.43933L14.4937 3.11333C14.5801 3.01771 14.6368 2.89912 14.6571 2.77192C14.6775 2.64472 14.6605 2.51435 14.6083 2.39658C14.5562 2.27881 14.471 2.17868 14.3631 2.1083C14.2552 2.03792 14.1292 2.0003 14.0004 2H2.00041C1.87148 2.00005 1.74533 2.03748 1.63724 2.10776C1.52915 2.17804 1.44376 2.27815 1.39141 2.39598C1.33906 2.5138 1.322 2.64427 1.34229 2.77159C1.36259 2.89892 1.41936 3.01762 1.50574 3.11333L6.32241 8.43933C6.5441 8.68433 6.66693 9.00292 6.66708 9.33333V13.3333Z" stroke="#0A0A0A" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_272_1925">
+<rect width="16" height="16" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+
                   Filter
                 </button>
               </div>
@@ -451,10 +463,7 @@ export default function CustomerDetailView({ customer, onBack, isDarkMode }) {
                       </div>
                       <div className="activity-description">{activity.description}</div>
                       <div className="activity-user">
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M11.6667 12.25V11.0833C11.6667 10.4645 11.4208 9.87092 10.9832 9.43334C10.5457 8.99575 9.95203 8.75 9.33333 8.75H4.66667C4.04797 8.75 3.45434 8.99575 3.01675 9.43334C2.57917 9.87092 2.33333 10.4645 2.33333 11.0833V12.25" stroke="currentColor" strokeWidth="1.17" strokeLinecap="round" strokeLinejoin="round"/>
-                          <path d="M7 6.41667C8.288 6.41667 9.33333 5.37133 9.33333 4.08333C9.33333 2.79533 8.288 1.75 7 1.75C5.712 1.75 4.66667 2.79533 4.66667 4.08333C4.66667 5.37133 5.712 6.41667 7 6.41667Z" stroke="currentColor" strokeWidth="1.17" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
+                        <span className="user-pill">{getInitials(activity.user)}</span>
                         {activity.user}
                       </div>
                     </div>

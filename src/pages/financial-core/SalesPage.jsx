@@ -5,6 +5,7 @@ import Header from './Header';
 import LogoutConfirmModal from '../../components/logout-modal/LogoutConfirmModal';
 import CustomerListView from './CustomerListView';
 import CustomerDetailView from './CustomerDetailView';
+import InvoicesView from './InvoicesView';
 import './SalesPage.css';
 
 export default function SalesPage() {
@@ -140,15 +141,15 @@ export default function SalesPage() {
         <Header isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
         <main className="sales-content">
           <div className="sales-container">
-            {/* Page Header - Hidden on Customers tab */}
-            {activeTab !== 'customers' && (
+            {/* Page Header - Hidden on Customers and Invoices tabs */}
+            {activeTab !== 'customers' && activeTab !== 'invoices' && (
               <div className="sales-page-header">
                 <h1>Sales (Accounts Receivable)</h1>
                 <p>Real-time accounts receivable monitoring and management</p>
               </div>
             )}
 
-            {/* Tabs - Hidden on Customers tab (rendered inside CustomerListView) */}
+            {/* Tabs - Hidden only on Customers tab (shown in other views) */}
             {activeTab !== 'customers' && (
               <div className="sales-tabs">
                 {tabs.map(tab => (
@@ -167,7 +168,9 @@ export default function SalesPage() {
             )}
 
             {/* Conditional rendering based on activeTab */}
-            {activeTab === 'customers' ? (
+            {activeTab === 'invoices' ? (
+              <InvoicesView isDarkMode={isDarkMode} />
+            ) : activeTab === 'customers' ? (
               selectedCustomer ? (
                 <CustomerDetailView 
                   customer={selectedCustomer} 

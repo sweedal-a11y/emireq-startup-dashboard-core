@@ -13,52 +13,77 @@ export default function CustomerListView({ onSelectCustomer, isDarkMode, tabs, a
     {
       id: 'CUST-001',
       company: 'Acme Corporation',
+      email: 'billing@acme.com',
       type: 'Enterprise',
       currency: 'USD',
       totalOutstanding: '$250',
       overdueBalance: '$250',
+      creditLimit: '$500,000',
       paymentTerms: 'Net 30',
-      status: 'Active'
+      status: 'Active',
+      billingAddress: '123 Business St, Suite 100, New York, NY',
+      taxId: 'XX-XXXXXXX',
+      salesOwner: 'John Smith'
     },
     {
       id: 'CUST-002',
       company: 'TechStart Inc',
+      email: 'accounts@techstart.com',
       type: 'SMB',
       currency: 'USD',
       totalOutstanding: '$250',
       overdueBalance: '$0',
+      creditLimit: '$150,000',
       paymentTerms: 'Net 15',
-      status: 'Active'
+      status: 'Active',
+      billingAddress: '456 Tech Ave, San Francisco, CA',
+      taxId: 'YY-YYYYYYY',
+      salesOwner: 'Sarah Johnson'
     },
     {
       id: 'CUST-003',
       company: 'Global Solutions Ltd',
+      email: 'finance@globalsolutions.com',
       type: 'Enterprise',
       currency: 'EUR',
       totalOutstanding: '$250',
       overdueBalance: '$250',
+      creditLimit: '$750,000',
       paymentTerms: 'Net 45',
-      status: 'Active'
+      status: 'Active',
+      billingAddress: '789 Global Plaza, London, UK',
+      taxId: 'ZZ-ZZZZZZZ',
+      salesOwner: 'Michael Brown'
     },
     {
       id: 'CUST-004',
       company: 'Retail Partners Co',
+      email: 'ap@retailpartners.com',
       type: 'Mid-Market',
       currency: 'USD',
       totalOutstanding: '$250',
       overdueBalance: '$250',
+      creditLimit: '$300,000',
       paymentTerms: 'Net 30',
-      status: 'Active'
+      status: 'Active',
+      billingAddress: '321 Retail Blvd, Chicago, IL',
+      taxId: 'AA-AAAAAAA',
+      salesOwner: 'Emily Davis'
     },
     {
       id: 'CUST-005',
       company: 'Innovation Labs',
+      email: 'billing@innovationlabs.com',
       type: 'SMB',
       currency: 'USD',
       totalOutstanding: '$250',
       overdueBalance: '$0',
+      creditLimit: '$200,000',
       paymentTerms: 'Net 30',
-      status: 'Active'
+      status: 'Active',
+      billingAddress: '555 Innovation Dr, Austin, TX',
+      taxId: 'BB-BBBBBBB',
+      salesOwner: 'David Wilson'
     }
   ];
 
@@ -226,20 +251,21 @@ export default function CustomerListView({ onSelectCustomer, isDarkMode, tabs, a
           </div>
         </div>
 
-        <table className="customer-table">
-          <thead>
-            <tr>
-              <th>CUSTOMER NAME</th>
-              <th>TYPE</th>
-              <th>CURRENCY</th>
-              <th>OUTSTANDING</th>
-              <th>OVERDUE</th>
-              <th>PAYMENT TERMS</th>
-              <th>STATUS</th>
-              <th>ACTIONS</th>
-            </tr>
-          </thead>
-          <tbody>
+        <div className="customer-table-wrapper">
+          <table className="customer-table">
+            <thead>
+              <tr>
+                <th>CUSTOMER NAME</th>
+                <th>TYPE</th>
+                <th>CURRENCY</th>
+                <th>OUTSTANDING</th>
+                <th>OVERDUE</th>
+                <th>PAYMENT TERMS</th>
+                <th>STATUS</th>
+                <th>ACTIONS</th>
+              </tr>
+            </thead>
+            <tbody>
             {filteredCustomers.length === 0 ? (
               <tr>
                 <td colSpan="8" style={{ textAlign: 'center', padding: '40px', color: '#667085' }}>
@@ -302,8 +328,8 @@ export default function CustomerListView({ onSelectCustomer, isDarkMode, tabs, a
               </tr>
             )))}
           </tbody>
-        </table>
-
+          </table>
+        </div>
         <div className="table-pagination">
           <div className="pagination-info">
             Showing <span className="pagination-number">{String(filteredCustomers.length).padStart(2, '0')}</span> / {customers.length} Results

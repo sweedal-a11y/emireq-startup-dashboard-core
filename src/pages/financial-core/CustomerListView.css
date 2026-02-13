@@ -233,7 +233,6 @@
   gap: 12px;
   align-items: center;
   padding: 0 24px 20px 24px;
-  border-bottom: 1px solid var(--border-color);
 }
 
 .search-box-full {
@@ -308,16 +307,22 @@
   border-color: #98A2B3;
 }
 
+.customer-table-wrapper {
+  overflow-x: auto;
+  margin: 0 24px 24px 24px;
+  border-radius: 8px;
+  border: 1px solid #EAECF0;
+}
+
 .customer-table {
   width: 100%;
   border-collapse: collapse;
-  border: 1px solid #EAECF0;
-  border-radius: 8px;
-  overflow: hidden;
+  background: #FFFFFF;
 }
 
 .customer-table thead {
   background: #F9FAFB;
+  border-bottom: 1px solid #EAECF0;
 }
 
 .customer-table th {
@@ -470,7 +475,6 @@
   justify-content: space-between;
   align-items: center;
   padding: 16px 24px;
-  border-top: 1px solid var(--border-color);
 }
 
 .pagination-info {
@@ -625,6 +629,14 @@
   border-color: #333333;
 }
 
+.dark-mode .customer-table-wrapper {
+  border-color: #333333;
+}
+
+.dark-mode .customer-table {
+  background: #1E1E1E;
+}
+
 .dark-mode .customer-table thead {
   background: #252525;
 }
@@ -639,7 +651,7 @@
 
 .dark-mode .search-box-full,
 .dark-mode .filter-dropdown {
-  background: #252525;
+  background-color: #252525;
   border-color: #333333;
   color: #FFFFFF;
 }
@@ -654,6 +666,8 @@
 
 .dark-mode .filter-dropdown {
   background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23A0A0A0' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
 }
 
 .dark-mode .action-btn {
@@ -725,8 +739,8 @@
 
 /* Responsive */
 @media (max-width: 1200px) {
-  .customer-table-container {
-    overflow-x: auto;
+  .customer-table-wrapper {
+    margin: 0 16px 16px 16px;
   }
   
   .customer-table {
@@ -760,6 +774,10 @@
   .filter-dropdown {
     flex: 1;
     min-width: 120px;
+  }
+
+  .customer-table-wrapper {
+    margin: 0 12px 12px 12px;
   }
 
   .table-pagination {
