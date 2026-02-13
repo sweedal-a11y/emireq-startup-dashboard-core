@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import FinancialSidebar from '../../components/financial-sidebar/FinancialSidebar';
 import Header from './Header';
 import LogoutConfirmModal from '../../components/logout-modal/LogoutConfirmModal';
@@ -10,9 +10,14 @@ import './SalesPage.css';
 
 export default function SalesPage() {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [activeTab, setActiveTab] = useState('overview');
+  const [activeTab, setActiveTab] = useState(() => {
+    // Initialize from URL query parameter
+    const viewParam = searchParams.get('view');
+    return viewParam || 'overview';
+  });
   const [selectedCustomer, setSelectedCustomer] = useState(null);
   const [enterpriseControls, setEnterpriseControls] = useState({
     creditLimit: false,
@@ -21,6 +26,15 @@ export default function SalesPage() {
     auditLock: false,
     multiEntity: false
   });
+
+  // Sync activeTab with URL query parameter
+  useEffect(() => {
+    const viewParam = searchParams.get('view');
+    if (viewParam && viewParam !== activeTab) {
+      setActiveTab(viewParam);
+      setSelectedCustomer(null);
+    }
+  }, [searchParams]);
 
   const toggleTheme = () => {
     setIsDarkMode(prev => !prev);
@@ -141,8 +155,8 @@ export default function SalesPage() {
         <Header isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
         <main className="sales-content">
           <div className="sales-container">
-            {/* Page Header - Hidden on Customers and Invoices tabs */}
-            {activeTab !== 'customers' && activeTab !== 'invoices' && (
+            {/* Page Header - Hidden only on Customers tab */}
+            {activeTab !== 'customers' && (
               <div className="sales-page-header">
                 <h1>Sales (Accounts Receivable)</h1>
                 <p>Real-time accounts receivable monitoring and management</p>
@@ -159,6 +173,7 @@ export default function SalesPage() {
                     onClick={() => {
                       setActiveTab(tab.id);
                       setSelectedCustomer(null);
+                      setSearchParams({ view: tab.id });
                     }}
                   >
                     {tab.label}
@@ -186,6 +201,7 @@ export default function SalesPage() {
                   onTabChange={(tabId) => {
                     setActiveTab(tabId);
                     setSelectedCustomer(null);
+                    setSearchParams({ view: tabId });
                   }}
                 />
               )

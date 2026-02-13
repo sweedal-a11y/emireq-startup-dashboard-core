@@ -777,6 +777,10 @@
 }
 
 @media (max-width: 768px) {
+  .sales-main {
+    margin-left: 0;
+  }
+  
   .sales-content {
     padding: 12px 16px;
   }
@@ -822,6 +826,10 @@
 }
 
 @media (max-width: 640px) {
+  .sales-main {
+    margin-left: 0;
+  }
+  
   .sales-content {
     padding: 12px;
   }
@@ -862,5 +870,11 @@
   
   .controls-grid {
     gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sales-main {
+    margin-left: 0; /* Stack layout on very small screens */
   }
 }
