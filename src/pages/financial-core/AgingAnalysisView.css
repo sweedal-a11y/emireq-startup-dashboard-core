@@ -1,0 +1,468 @@
+.aging-analysis-view {
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+/* Aging Bucket Cards Grid */
+.aging-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+  cursor: pointer;
+}
+
+.aging-card {
+  background: white;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.aging-analysis-view.dark-mode .aging-card {
+  background: #1E1E1E;
+  border-color: #333333;
+}
+
+.aging-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.aging-analysis-view.dark-mode .aging-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.aging-card-label {
+  font-size: 12px;
+  color: #6B7280;
+  margin-bottom: 8px;
+  font-weight: 400;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.aging-analysis-view.dark-mode .aging-card-label {
+  color: #A0A0A0;
+}
+
+.aging-card-amount {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+  transition: color 0.3s ease;
+}
+
+/* Aging Analysis Section */
+.aging-analysis-section {
+  background: white;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.aging-analysis-view.dark-mode .aging-analysis-section {
+  background: #1E1E1E;
+  border-color: #333333;
+}
+
+.aging-section-header {
+  margin-bottom: 24px;
+}
+
+.aging-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.aging-title-row h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #121212;
+  margin: 0;
+  line-height: 1.2;
+  transition: color 0.3s ease;
+}
+
+.aging-analysis-view.dark-mode .aging-title-row h2 {
+  color: #FFFFFF;
+}
+
+.info-icon-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  transition: opacity 0.2s;
+}
+
+.info-icon-btn:hover {
+  opacity: 0.7;
+}
+
+.aging-subtitle {
+  font-size: 14px;
+  color: #6A7282;
+  margin: 0;
+  line-height: 1.5;
+  transition: color 0.3s ease;
+}
+
+.aging-analysis-view.dark-mode .aging-subtitle {
+  color: #A0A0A0;
+}
+
+/* Filters */
+.aging-filters {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.filter-dropdown {
+  padding: 10px 14px;
+  background: white;
+  border: 0.5px solid rgba(193, 193, 193, 0.5);
+  border-radius: 8px;
+  font-size: 14px;
+  color: #121212;
+  cursor: pointer;
+  outline: none;
+  font-weight: 400;
+  min-width: 140px;
+  height: 45px;
+  box-sizing: border-box;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23121212' stroke-width='1.129' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+  transition: all 0.3s ease;
+}
+
+.aging-analysis-view.dark-mode .filter-dropdown {
+  background-color: #252525;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23FFFFFF' stroke-width='1.129' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  border-color: #333333;
+  color: #FFFFFF;
+}
+
+.filter-dropdown:hover {
+  border-color: #98A2B3;
+}
+
+.aging-analysis-view.dark-mode .filter-dropdown:hover {
+  border-color: #444444;
+}
+
+.filter-dropdown:focus {
+  outline: none;
+  border-color: rgba(193, 193, 193, 0.5);
+}
+
+.aging-analysis-view.dark-mode .filter-dropdown:focus {
+  border-color: #444444;
+}
+
+/* Date Picker */
+.date-picker-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: white;
+  border: 0.5px solid rgba(193, 193, 193, 0.5);
+  border-radius: 8px;
+  min-width: 200px;
+  height: 45px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.aging-analysis-view.dark-mode .date-picker-wrapper {
+  background: #252525;
+  border-color: #333333;
+}
+
+.date-picker-wrapper:hover {
+  border-color: #98A2B3;
+}
+
+.aging-analysis-view.dark-mode .date-picker-wrapper:hover {
+  border-color: #444444;
+}
+
+.date-picker-wrapper svg {
+  color: #6B7280;
+  flex-shrink: 0;
+  pointer-events: none;
+  transition: color 0.3s ease;
+}
+
+.aging-analysis-view.dark-mode .date-picker-wrapper svg {
+  color: #A0A0A0;
+}
+
+.date-picker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.date-display {
+  font-size: 14px;
+  color: #121212;
+  font-weight: 400;
+  pointer-events: none;
+  transition: color 0.3s ease;
+}
+
+.aging-analysis-view.dark-mode .date-display {
+  color: #FFFFFF;
+}
+
+/* Table Section */
+.aging-table-container {
+  background: white;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin-top: 24px;
+  border: 1px solid #EAEAEA;
+  cursor: pointer;
+}
+
+.aging-analysis-view.dark-mode .aging-table-container {
+  background: #1E1E1E;
+  border-color: #333333;
+}
+
+.aging-table {
+  width: 100%;
+  border-collapse: collapse;
+  /* min-width: 800px; Remove fixed min-width to allow shrinking, or set lower if needed */
+}
+
+.aging-table th {
+  text-align: left;
+  padding: 12px 16px; /* Reduced padding */
+  font-size: 12px;
+  font-weight: 500;
+  color: #6B7280;
+  text-transform: uppercase;
+  border-bottom: 1px solid #EAEAEA;
+  background-color: #FAFAFA;
+  white-space: nowrap;
+}
+
+.aging-analysis-view.dark-mode .aging-table th {
+  background-color: #252525;
+  color: #A0A0A0;
+  border-color: #333333;
+}
+
+.aging-table td {
+  padding: 12px 16px; /* Reduced padding */
+  font-size: 14px;
+  color: #111827;
+  border-bottom: 1px solid #EAEAEA;
+  white-space: nowrap;
+}
+
+.aging-analysis-view.dark-mode .aging-table td {
+  color: #FFFFFF;
+  border-color: #333333;
+}
+
+.aging-table tr:last-child td {
+  border-bottom: none;
+}
+
+.aging-table tbody tr {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.aging-table tbody tr:not(:last-child):hover {
+  background-color: #F9FAFB;
+}
+
+.aging-analysis-view.dark-mode .aging-table tbody tr:not(:last-child):hover {
+  background-color: #2A2A2A;
+}
+
+/* Total Outstanding Cell Styles */
+.aging-table td.total-outstanding-cell {
+  font-weight: bold;
+  color: #131313;
+}
+
+.aging-analysis-view.dark-mode .aging-table td.total-outstanding-cell {
+  color: #FFFFFF;
+}
+
+/* Totals Row */
+.aging-table tr.totals-row {
+  background-color: #EEF2FF;
+  font-weight: 600;
+}
+
+.aging-analysis-view.dark-mode .aging-table tr.totals-row {
+  background-color: #2A2A2A;
+}
+
+.aging-table tr.totals-row td {
+  border-top: 1px solid #E0E7FF;
+}
+
+.aging-analysis-view.dark-mode .aging-table tr.totals-row td {
+  border-top-color: #333333;
+}
+
+/* Footer Note */
+.aging-footer-note {
+  font-size: 12px;
+  color: #6B7280;
+  text-align: center;
+  margin-top: 16px;
+  padding: 16px 0;
+  transition: color 0.3s ease;
+}
+
+.aging-analysis-view.dark-mode .aging-footer-note {
+  color: #A0A0A0;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .aging-filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-dropdown,
+  .date-picker-wrapper {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .aging-analysis-section {
+    padding: 16px;
+  }
+
+  .aging-cards-grid {
+    gap: 12px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .aging-card {
+    padding: 16px;
+  }
+
+  .aging-table-container {
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .aging-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .aging-card-amount {
+    font-size: 20px;
+  }
+
+  .aging-section-header {
+    margin-bottom: 16px;
+  }
+
+  .aging-title-row h2 {
+    font-size: 18px;
+  }
+
+  .aging-subtitle {
+    font-size: 13px;
+  }
+
+  .aging-filters {
+    gap: 10px;
+  }
+
+  .filter-dropdown,
+  .date-picker-wrapper {
+    height: 42px;
+    font-size: 13px;
+  }
+
+  /* Only reduce padding significantly on very small screens if necessary */
+  .aging-table th,
+  .aging-table td {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .aging-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .aging-card {
+    padding: 12px;
+  }
+
+  .aging-card-label {
+    font-size: 11px;
+  }
+
+
+  .aging-card-amount {
+    font-size: 18px;
+  }
+
+  .aging-analysis-section {
+    padding: 12px;
+  }
+
+  .aging-title-row h2 {
+    font-size: 16px;
+  }
+
+  .aging-subtitle {
+    font-size: 12px;
+  }
+
+  .filter-dropdown,
+  .date-picker-wrapper {
+    height: 40px;
+    font-size: 12px;
+    min-width: 120px;
+  }
+
+  .aging-table th,
+  .aging-table td {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+}

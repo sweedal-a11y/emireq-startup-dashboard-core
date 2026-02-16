@@ -6,6 +6,8 @@ import LogoutConfirmModal from '../../components/logout-modal/LogoutConfirmModal
 import CustomerListView from './CustomerListView';
 import CustomerDetailView from './CustomerDetailView';
 import InvoicesView from './InvoicesView';
+import PaymentsView from './PaymentsView';
+import AgingAnalysisView from './AgingAnalysisView';
 import './SalesPage.css';
 
 export default function SalesPage() {
@@ -185,6 +187,10 @@ export default function SalesPage() {
             {/* Conditional rendering based on activeTab */}
             {activeTab === 'invoices' ? (
               <InvoicesView isDarkMode={isDarkMode} />
+            ) : activeTab === 'payments' ? (
+              <PaymentsView isDarkMode={isDarkMode} />
+            ) : activeTab === 'aging' ? (
+              <AgingAnalysisView isDarkMode={isDarkMode} />
             ) : activeTab === 'customers' ? (
               selectedCustomer ? (
                 <CustomerDetailView 
