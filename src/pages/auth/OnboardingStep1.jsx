@@ -106,9 +106,12 @@ const OnboardingStep1 = () => {
       domain: formData.website,
       country: formData.country,
     };
-    const isToken = true
+    const isToken = true;
     const response = await getPreview(STARTUP_PREVIEW, payload, isToken);
-    console.log(response);
+    if (response.ok) {
+      localStorage.setItem("previewData", JSON.stringify(response.data))
+      navigate("/onboarding")
+    }
   };
 
   const TrustBadgeIcon = () => (
@@ -188,8 +191,6 @@ const OnboardingStep1 = () => {
         </div>
 
         <div className="onboarding-content">
-          <div className="step-badge">Step 1 of 9</div>
-
           <h1 className="onboarding-title">Your Company Identity</h1>
 
           <div className="quote-icon-onboarding">
@@ -324,17 +325,6 @@ const OnboardingStep1 = () => {
           </div>
         </div>
 
-        <div className="progress-stepper">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((step) => (
-            <React.Fragment key={step}>
-              <div className={`progress-step ${step === 1 ? "active" : ""}`}>
-                {step}
-              </div>
-              {step < 9 && <div className="progress-line"></div>}
-            </React.Fragment>
-          ))}
-        </div>
-
         <div className="onboarding-form-section">
           <div className="form-header">
             <div className="form-icon">
@@ -463,98 +453,6 @@ const OnboardingStep1 = () => {
                 </svg>
               </div>
             </div>
-            {/* <div className="onboarding-form-group">
-              <label htmlFor="industry">
-                Industry<span className="required">*</span>
-              </label>
-              <div className="select-wrapper">
-                <select
-                  id="industry"
-                  name="industry"
-                  value={formData.industry}
-                  onChange={handleInputChange}
-                  onFocus={() => handleFocus("industry")}
-                  onBlur={handleBlur}
-                  className={focusedField === "industry" ? "focused" : ""}
-                  required
-                >
-                  <option value="">Select your industry</option>
-                  <option value="technology">Technology</option>
-                  <option value="healthcare">Healthcare</option>
-                  <option value="finance">Finance</option>
-                  <option value="education">Education</option>
-                  <option value="retail">Retail</option>
-                  <option value="other">Other</option>
-                </select>
-                <svg
-                  className="select-arrow"
-                  width="12"
-                  height="8"
-                  viewBox="0 0 12 8"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M1 1L6 6L11 1"
-                    stroke="#6B7280"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-            </div> */}
-            {/* 
-            <div className="onboarding-form-group">
-              <label htmlFor="foundedDate">
-                Founded Date<span className="required">*</span>
-              </label>
-              <div className="input-with-icon">
-                <svg
-                  className="input-icon"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <rect
-                    x="3"
-                    y="4"
-                    width="14"
-                    height="14"
-                    rx="2"
-                    stroke="#9CA3AF"
-                    strokeWidth="1.5"
-                  />
-                  <path d="M3 8H17" stroke="#9CA3AF" strokeWidth="1.5" />
-                  <path
-                    d="M7 2V6"
-                    stroke="#9CA3AF"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M13 2V6"
-                    stroke="#9CA3AF"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                  />
-                </svg>
-                <input
-                  type="text"
-                  id="foundedDate"
-                  name="foundedDate"
-                  placeholder="Current Stage"
-                  value={formData.foundedDate}
-                  onChange={handleInputChange}
-                  onFocus={() => handleFocus("foundedDate")}
-                  onBlur={handleBlur}
-                  className={focusedField === "foundedDate" ? "focused" : ""}
-                  required
-                />
-              </div>
-            </div> */}
 
             <div className="onboarding-form-group">
               <label htmlFor="website">Website</label>
@@ -594,58 +492,6 @@ const OnboardingStep1 = () => {
                 />
               </div>
             </div>
-            {/* 
-            <div className="onboarding-form-group">
-              <label htmlFor="registrationNumber">
-                Company Registration Number
-              </label>
-              <div className="input-with-icon">
-                <svg
-                  className="input-icon"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M11 2H5C4.46957 2 3.96086 2.21071 3.58579 2.58579C3.21071 2.96086 3 3.46957 3 4V16C3 16.5304 3.21071 17.0391 3.58579 17.4142C3.96086 17.7893 4.46957 18 5 18H15C15.5304 18 16.0391 17.7893 16.4142 17.4142C16.7893 17.0391 17 16.5304 17 16V8L11 2Z"
-                    stroke="#9CA3AF"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M11 2V8H17"
-                    stroke="#9CA3AF"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                <input
-                  type="text"
-                  id="registrationNumber"
-                  name="registrationNumber"
-                  placeholder="REG123456"
-                  value={formData.registrationNumber}
-                  onChange={handleInputChange}
-                  onFocus={() => handleFocus("registrationNumber")}
-                  onBlur={handleBlur}
-                  className={
-                    focusedField === "registrationNumber" ? "focused" : ""
-                  }
-                />
-              </div>
-            </div> */}
-
-            <button
-              type="submit"
-              className="btn-continue"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? "Processing..." : "Continue"}
-            </button>
           </form>
           <button className="btn-continue" onClick={() => handleFetchData()}>
             {" "}

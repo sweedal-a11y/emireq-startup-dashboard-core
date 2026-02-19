@@ -1,0 +1,51 @@
+.container {
+  background: #f8f9fa;
+  padding: 40px;
+  height: 100vh;
+}
+.logo {
+  width: 10%;
+}
+.textContainer {
+  margin-top: 2%;
+}
+.contentWarpper {
+  display: flex;
+  gap: 2%;
+  flex-wrap: wrap;
+  margin-top: 2%;
+}
+.onboardingFormGroup {
+  width: 23%;
+}
+.companyHeader {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+}
+.companyLogo {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+.linkedinBtn {
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #000000;
+  background: #ffc300;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 4px;
+  font-family: inherit;
+  position: relative;
+  display: block;
+  margin: auto;
+}
+.headingContainor {
+  display: flex;
+  justify-content: space-between;
+}

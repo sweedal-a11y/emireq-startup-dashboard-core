@@ -27,6 +27,7 @@ import OnboardingStep8 from "./pages/auth/OnboardingStep8";
 import OnboardingStep9 from "./pages/auth/OnboardingStep9";
 import DocumentsPage from "./pages/documents/DocumentsPage";
 import "./App.css";
+import Onboarding from "./pages/auth/Onboarding";
 
 function AppContent() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -155,6 +156,7 @@ function AppContent() {
           <Route path="/documents" element={<DocumentsPage toggleTheme={toggleTheme} sidebarCollapsed={sidebarCollapsed} />} />
           <Route path="/auth/login" element={<Login />} />
           <Route path="/auth/register" element={<Register />} />
+          <Route path="/onboarding" element={<Onboarding />} />
           <Route path="/onboarding/step1" element={<OnboardingStep1 />} />
           <Route path="/onboarding/step2" element={<OnboardingStep2 />} />
           <Route path="/onboarding/step3" element={<OnboardingStep3 />} />

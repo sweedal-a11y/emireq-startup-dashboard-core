@@ -44,4 +44,5 @@ export const loginStartup = (url, payload) => postData(url, payload);
 export const registerStartup = (url, payload) => postData(url, payload);
 export const getPreview = (url, payload, isToken) => postData(url, payload, isToken);
 export const getProfileData = (url) => getData(url);
+export const onboardingStep = (url, payload, isToken) => postData(url, payload, isToken);
 
