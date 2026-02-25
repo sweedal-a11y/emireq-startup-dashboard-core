@@ -1,5 +1,13 @@
 import { useState, useEffect, useRef } from "react";
-import { BrowserRouter, Routes, Route, Navigate, useNavigate, useSearchParams, useLocation } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  useNavigate,
+  useSearchParams,
+  useLocation,
+} from "react-router-dom";
 import Sidebar from "./components/sidebar/Sidebar";
 import LogoutConfirmModal from "./components/logout-modal/LogoutConfirmModal";
 import Dashboard from "./pages/Dashboard";
@@ -28,6 +36,7 @@ import OnboardingStep9 from "./pages/auth/OnboardingStep9";
 import DocumentsPage from "./pages/documents/DocumentsPage";
 import "./App.css";
 import Onboarding from "./pages/auth/Onboarding";
+import GlobalLoader from "./components/loader/GlobalLoader";
 
 function AppContent() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -46,9 +55,9 @@ function AppContent() {
   // Apply theme to body element
   useEffect(() => {
     if (isDarkMode) {
-      document.body.setAttribute('data-theme', 'dark');
+      document.body.setAttribute("data-theme", "dark");
     } else {
-      document.body.removeAttribute('data-theme');
+      document.body.removeAttribute("data-theme");
     }
   }, [isDarkMode]);
 
@@ -84,7 +93,7 @@ function AppContent() {
     } else {
       logoutButtonRef.current = document.activeElement;
     }
-    
+
     setShowLogoutModal(true);
     // Update URL with query param
     const params = new URLSearchParams(searchParams);
@@ -98,7 +107,7 @@ function AppContent() {
     const params = new URLSearchParams(searchParams);
     params.delete("confirmLogout");
     setSearchParams(params, { replace: false });
-    
+
     // Return focus to logout button
     if (logoutButtonRef.current) {
       setTimeout(() => {
@@ -112,48 +121,115 @@ function AppContent() {
     // Clear auth state (mock logout)
     localStorage.removeItem("authToken");
     sessionStorage.clear();
-    
+
     // Close modal
     setShowLogoutModal(false);
-    
+
     // Remove query param
     const params = new URLSearchParams(searchParams);
     params.delete("confirmLogout");
     setSearchParams(params, { replace: true });
-    
+
     // Navigate to login page
     navigate("/auth/login");
   };
 
   // Don't show sidebar on auth pages and financial-core
-  const isAuthPage = location.pathname.startsWith("/auth") || location.pathname.startsWith("/onboarding") || location.pathname.startsWith("/financial-core");
+  const isAuthPage =
+    location.pathname.startsWith("/auth") ||
+    location.pathname.startsWith("/onboarding") ||
+    location.pathname.startsWith("/financial-core");
 
   return (
-    <div className={`em-app ${isDarkMode ? 'em-app--dark' : ''}`}>
+    <div className={`em-app ${isDarkMode ? "em-app--dark" : ""}`}>
       {!isAuthPage && (
-        <Sidebar 
-          collapsed={sidebarCollapsed} 
+        <Sidebar
+          collapsed={sidebarCollapsed}
           onToggle={() => setSidebarCollapsed(!sidebarCollapsed)}
           onLogoutClick={handleLogoutClick}
         />
       )}
 
-      <main className={`em-main ${sidebarCollapsed ? 'em-main--expanded' : ''} ${isAuthPage ? 'em-main--auth' : ''}`}>
+      <main
+        className={`em-main ${sidebarCollapsed ? "em-main--expanded" : ""} ${isAuthPage ? "em-main--auth" : ""}`}
+      >
         <Routes>
           <Route path="/" element={<Navigate to="/auth/login" replace />} />
-          <Route path="/overview" element={<Dashboard isDarkMode={isDarkMode} toggleTheme={toggleTheme} sidebarCollapsed={sidebarCollapsed} />} />
-          <Route path="/profile" element={<MyProfile toggleTheme={toggleTheme} />} />
-          <Route path="/outreach" element={<OutreachPage isDarkMode={isDarkMode} toggleTheme={toggleTheme} />} />
-          <Route path="/investor-inquiries" element={<InvestorInquiriesPage isDarkMode={isDarkMode} toggleTheme={toggleTheme} sidebarCollapsed={sidebarCollapsed} />} />
-          <Route path="/funding" element={<FundingProgressPage toggleTheme={toggleTheme} sidebarCollapsed={sidebarCollapsed} />} />
+          <Route
+            path="/overview"
+            element={
+              <Dashboard
+                isDarkMode={isDarkMode}
+                toggleTheme={toggleTheme}
+                sidebarCollapsed={sidebarCollapsed}
+              />
+            }
+          />
+          <Route
+            path="/profile"
+            element={<MyProfile toggleTheme={toggleTheme} />}
+          />
+          <Route
+            path="/outreach"
+            element={
+              <OutreachPage isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+            }
+          />
+          <Route
+            path="/investor-inquiries"
+            element={
+              <InvestorInquiriesPage
+                isDarkMode={isDarkMode}
+                toggleTheme={toggleTheme}
+                sidebarCollapsed={sidebarCollapsed}
+              />
+            }
+          />
+          <Route
+            path="/funding"
+            element={
+              <FundingProgressPage
+                toggleTheme={toggleTheme}
+                sidebarCollapsed={sidebarCollapsed}
+              />
+            }
+          />
           <Route path="/financial-core" element={<FinancialCorePage />} />
-          <Route path="/financial-core/overview" element={<CoreFinancialOverview />} />
-          <Route path="/financial-core/treasury-liquidity" element={<TreasuryLiquidityManagement />} />
-          <Route path="/financial-core/transactions" element={<TransactionsPage />} />
+          <Route
+            path="/financial-core/overview"
+            element={<CoreFinancialOverview />}
+          />
+          <Route
+            path="/financial-core/treasury-liquidity"
+            element={<TreasuryLiquidityManagement />}
+          />
+          <Route
+            path="/financial-core/transactions"
+            element={<TransactionsPage />}
+          />
           <Route path="/financial-core/sales" element={<SalesPage />} />
-          <Route path="/financial-core/invoices/:invoiceId" element={<InvoiceDetailView />} />
-          <Route path="/messages" element={<MessagesPage toggleTheme={toggleTheme} sidebarCollapsed={sidebarCollapsed} />} />
-          <Route path="/documents" element={<DocumentsPage toggleTheme={toggleTheme} sidebarCollapsed={sidebarCollapsed} />} />
+          <Route
+            path="/financial-core/invoices/:invoiceId"
+            element={<InvoiceDetailView />}
+          />
+          <Route
+            path="/messages"
+            element={
+              <MessagesPage
+                toggleTheme={toggleTheme}
+                sidebarCollapsed={sidebarCollapsed}
+              />
+            }
+          />
+          <Route
+            path="/documents"
+            element={
+              <DocumentsPage
+                toggleTheme={toggleTheme}
+                sidebarCollapsed={sidebarCollapsed}
+              />
+            }
+          />
           <Route path="/auth/login" element={<Login />} />
           <Route path="/auth/register" element={<Register />} />
           <Route path="/onboarding" element={<Onboarding />} />
@@ -182,6 +258,7 @@ function AppContent() {
 function App() {
   return (
     <BrowserRouter>
+      <GlobalLoader />
       <AppContent />
     </BrowserRouter>
   );

@@ -1,8 +1,12 @@
+import { hideLoader, showLoader } from "../../redux/reducers/loaderSlice";
+import { dispatch } from "../../redux/store";
 import { BASE_URL } from "../../services/endPoints";
 import { token } from "../../utils/utils";
 
 async function postData(url, payload, isToken) {
   try {
+    dispatch(showLoader());
+
     const response = await fetch(BASE_URL + url, {
       method: "POST",
       headers: isToken
@@ -24,25 +28,35 @@ async function postData(url, payload, isToken) {
     }
   } catch (error) {
     console.error("Error:", error.message);
+  } finally {
+    dispatch(hideLoader());
   }
 }
 
 const getData = async (url) => {
-  const settings = {
-    headers: {
-      Authorization: `Token ${token}`,
-    },
-  };
-  const response = await fetch(BASE_URL + url, settings);
-  if (response) {
-    const result = await response.json();
-    return result;
+  try {
+    dispatch(showLoader());
+    const settings = {
+      headers: {
+        Authorization: `Token ${token}`,
+      },
+    };
+    const response = await fetch(BASE_URL + url, settings);
+    if (response) {
+      const result = await response.json();
+      return result;
+    }
+  } catch (error) {
+    console.log(error);
+  } finally {
+    dispatch(hideLoader());
   }
 };
 
 export const loginStartup = (url, payload) => postData(url, payload);
 export const registerStartup = (url, payload) => postData(url, payload);
-export const getPreview = (url, payload, isToken) => postData(url, payload, isToken);
+export const getPreview = (url, payload, isToken) =>
+  postData(url, payload, isToken);
 export const getProfileData = (url) => getData(url);
-export const onboardingStep = (url, payload, isToken) => postData(url, payload, isToken);
-
+export const onboardingStep = (url, payload, isToken) =>
+  postData(url, payload, isToken);
