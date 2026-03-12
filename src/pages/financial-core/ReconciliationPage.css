@@ -1,0 +1,137 @@
+/* ===== Layout ===== */
+.recon-page { display: flex; min-height: 100vh; background: #F9FAFB; font-family: "Inter", system-ui, sans-serif; }
+.recon-page.dark-mode { background: #0A0A0A; }
+.recon-main { flex: 1; margin-left: 260px; display: flex; flex-direction: column; overflow-x: hidden; }
+.recon-content { flex: 1; padding: 24px 32px; }
+.recon-container { max-width: 1400px; margin: 0 auto; }
+
+/* ===== Page Header ===== */
+.recon-page-header {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 24px; gap: 16px; flex-wrap: wrap;
+}
+.recon-page-header h1 { font-size: 28px; font-weight: 600; color: #121212; margin: 0 0 4px; }
+.recon-page-header p { font-size: 14px; color: #667085; margin: 0; }
+.recon-add-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 16px; background: #121212; color: #fff;
+  border: none; border-radius: 8px; font-size: 14px; font-weight: 500;
+  cursor: pointer; transition: background 0.2s; white-space: nowrap; flex-shrink: 0;
+}
+.recon-add-btn:hover { background: #2B2B2B; }
+
+/* ===== Stats Grid ===== */
+.recon-stats-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 16px; margin-bottom: 24px;
+}
+.recon-stat-card {
+  background: #fff; border: 1px solid #EAECF0; border-radius: 12px;
+  padding: 20px; cursor: pointer; transition: box-shadow 0.2s;
+}
+.recon-stat-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.recon-stat-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.recon-stat-label { font-size: 14px; color: #667085; font-weight: 400; }
+.recon-stat-icon {
+  display: flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: 50%;
+}
+.recon-stat-value { font-size: 32px; font-weight: 600; color: #121212; margin-bottom: 6px; line-height: 1.1; }
+.recon-stat-sub { font-size: 13px; font-weight: 500; }
+
+/* ===== Table Section Card ===== */
+.recon-section {
+  background: #fff; border-radius: 12px; border: 1px solid #EAECF0; padding: 24px;
+}
+
+/* ===== Status Badges ===== */
+.recon-status-badge {
+  display: inline-flex; align-items: center; padding: 3px 10px;
+  font-size: 12px; font-weight: 500; border-radius: 20px; white-space: nowrap;
+}
+.rs-matched { background: #DCFCE7; color: #008236; }
+.rs-unmatched { background: #FEE4E2; color: #B42318; }
+.rs-pending { background: #FEF3C6; color: #BB4D00; }
+
+/* ===== Reconciliation ID ===== */
+.recon-id-primary { font-size: 14px; font-weight: 500; color: #121212; }
+.recon-id-ref { font-size: 12px; color: #667085; margin-top: 2px; }
+
+/* ===== Account Cell ===== */
+.recon-acct-cell { display: flex; align-items: center; gap: 10px; }
+.recon-acct-icon {
+  display: flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
+}
+.recon-acct-icon.bank { background: #DBEAFE; color: #1447E6; }
+.recon-acct-icon.wallet { background: #EDE9FE; color: #7C3AED; }
+.recon-acct-name { font-size: 14px; font-weight: 500; color: #121212; }
+.recon-acct-type { font-size: 12px; color: #667085; margin-top: 2px; }
+
+/* ===== Amount ===== */
+.recon-amount { font-size: 14px; font-weight: 600; }
+.recon-amount.pos { color: #008236; }
+.recon-amount.neg { color: #B42318; }
+
+/* ===== Dark Mode ===== */
+.recon-page.dark-mode .recon-main { background: #0A0A0A; }
+.recon-page.dark-mode .recon-content { background: #0A0A0A; }
+.recon-page.dark-mode .recon-page-header h1 { color: #FFFFFF; }
+.recon-page.dark-mode .recon-page-header p { color: #98A2B3; }
+.recon-page.dark-mode .recon-add-btn { background: #F9FAFB; color: #121212; }
+.recon-page.dark-mode .recon-add-btn:hover { background: #EAECF0; }
+.recon-page.dark-mode .recon-stat-card { background: #1A1A1A; border-color: #2B2B2B; }
+.recon-page.dark-mode .recon-stat-label { color: #98A2B3; }
+.recon-page.dark-mode .recon-stat-value { color: #FFFFFF; }
+.recon-page.dark-mode .recon-section { background: #1A1A1A; border-color: #2B2B2B; }
+.recon-page.dark-mode .recon-id-primary { color: #F9FAFB; }
+.recon-page.dark-mode .recon-id-ref { color: #98A2B3; }
+.recon-page.dark-mode .recon-acct-name { color: #F9FAFB; }
+.recon-page.dark-mode .recon-acct-type { color: #98A2B3; }
+
+/* Shared component dark overrides */
+.recon-page.dark-mode .search-box input { background: #0A0A0A; border-color: #2B2B2B; color: #F9FAFB; }
+.recon-page.dark-mode .dropdown-button { background: #0A0A0A; border-color: #2B2B2B; color: #F9FAFB; }
+.recon-page.dark-mode .dropdown-button:hover { background: #1A1A1A; }
+.recon-page.dark-mode .dropdown-menu { background: #1A1A1A; border-color: #2B2B2B; }
+.recon-page.dark-mode .dropdown-menu button { color: #F9FAFB; }
+.recon-page.dark-mode .dropdown-menu button:hover { background: #2B2B2B; }
+.recon-page.dark-mode .transactions-table-wrapper { border-color: #2B2B2B; }
+.recon-page.dark-mode .transactions-table { background: #1A1A1A; }
+.recon-page.dark-mode .transactions-table thead { background: #0A0A0A; border-bottom-color: #2B2B2B; }
+.recon-page.dark-mode .transactions-table th { color: #98A2B3; }
+.recon-page.dark-mode .transactions-table tbody tr { border-bottom-color: #2B2B2B; }
+.recon-page.dark-mode .transactions-table tbody tr:hover { background: #0A0A0A; }
+.recon-page.dark-mode .transactions-table td { color: #D0D5DD; }
+.recon-page.dark-mode .txn-date { color: #98A2B3; }
+.recon-page.dark-mode .action-button { color: #98A2B3; }
+.recon-page.dark-mode .action-button:hover { background: #2B2B2B; color: #F9FAFB; }
+.recon-page.dark-mode .transactions-pagination { border-top-color: #2B2B2B; }
+.recon-page.dark-mode .pagination-info { color: #98A2B3; }
+.recon-page.dark-mode .pagination-count { color: #F9FAFB; border-color: #667085; background: #1A1A1A; }
+.recon-page.dark-mode .pagination-button { background: rgba(193,193,193,0.15); color: #F9FAFB; }
+.recon-page.dark-mode .pagination-number { color: #98A2B3; background: rgba(193,193,193,0.15); }
+.recon-page.dark-mode .pagination-button:hover:not(:disabled) { background: rgba(193,193,193,0.25); }
+.recon-page.dark-mode .pagination-number:hover:not(.active) { background: rgba(193,193,193,0.25); color: #F9FAFB; }
+.recon-page.dark-mode .pagination-number.active { background: #152B5A; border-color: #667085; color: #FFFFFF; }
+.recon-page.dark-mode .pagination-ellipsis { color: #98A2B3; }
+.recon-page.dark-mode .transactions-footer-note { background: #1A1A1A; color: #98A2B3; }
+
+/* ===== Responsive ===== */
+@media (max-width: 1100px) { .recon-stats-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 992px) {
+  .recon-main { margin-left: 0; }
+  .recon-content { padding: 16px 20px; }
+  .recon-page-header { flex-direction: column; }
+  .recon-add-btn { align-self: flex-start; }
+}
+@media (max-width: 768px) {
+  .recon-stats-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .recon-content { padding: 16px; }
+  .recon-page-header h1 { font-size: 22px; }
+  .recon-section { padding: 16px; }
+  .transactions-filters { flex-direction: column; }
+  .filter-dropdowns { width: 100%; }
+  .search-box { min-width: 100%; }
+}
+@media (max-width: 480px) { .recon-stats-grid { grid-template-columns: 1fr; } }

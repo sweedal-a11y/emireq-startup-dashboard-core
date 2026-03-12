@@ -1,0 +1,79 @@
+/* ===== Layout ===== */
+.br-page { display: flex; min-height: 100vh; background: #F9FAFB; font-family: "Inter", system-ui, sans-serif; }
+.br-page.dark-mode { background: #0A0A0A; }
+.br-main { flex: 1; margin-left: 260px; display: flex; flex-direction: column; overflow-x: hidden; }
+.br-content { flex: 1; padding: 24px 32px; }
+.br-container { max-width: 1400px; margin: 0 auto; }
+
+/* ===== Page Header ===== */
+.br-page-header {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 32px; gap: 16px; flex-wrap: wrap;
+}
+.br-page-header h1 { font-size: 28px; font-weight: 600; color: #121212; margin: 0 0 4px; }
+.br-page-header p { font-size: 14px; color: #667085; margin: 0; }
+.br-add-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 16px; background: #121212; color: #fff;
+  border: none; border-radius: 8px; font-size: 14px; font-weight: 500;
+  cursor: pointer; transition: background 0.2s; white-space: nowrap; flex-shrink: 0;
+}
+.br-add-btn:hover { background: #2B2B2B; }
+
+/* ===== Rules List ===== */
+.br-rules-list { display: flex; flex-direction: column; gap: 12px; }
+.br-rule-card {
+  display: flex; align-items: center; gap: 16px;
+  padding: 20px 24px; background: #fff;
+  border-radius: 12px; border: 1px solid #EAECF0;
+  cursor: pointer; transition: box-shadow 0.2s;
+}
+.br-rule-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.br-rule-icon-box {
+  display: flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px; border-radius: 10px;
+  background: #FFF7ED; color: #C4541A; flex-shrink: 0;
+}
+.br-rule-info { flex: 1; min-width: 0; }
+.br-rule-name-row { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; flex-wrap: wrap; }
+.br-rule-name { font-size: 15px; font-weight: 600; color: #121212; }
+.br-rule-badge {
+  font-size: 12px; font-weight: 500; color: #027A48;
+  background: #D1FAE5; border-radius: 20px; padding: 2px 10px;
+}
+.br-rule-desc { font-size: 13px; color: #667085; margin: 0; }
+.br-rule-menu {
+  display: flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border: none; background: transparent;
+  border-radius: 6px; color: #667085; cursor: pointer;
+  flex-shrink: 0; transition: background 0.15s;
+}
+.br-rule-menu:hover { background: #F3F4F6; color: #121212; }
+
+/* ===== Dark Mode ===== */
+.br-page.dark-mode .br-main,
+.br-page.dark-mode .br-content { background: #0A0A0A; }
+.br-page.dark-mode .br-page-header h1 { color: #FFFFFF; }
+.br-page.dark-mode .br-page-header p { color: #98A2B3; }
+.br-page.dark-mode .br-add-btn { background: #F9FAFB; color: #121212; }
+.br-page.dark-mode .br-add-btn:hover { background: #EAECF0; }
+.br-page.dark-mode .br-rule-card { background: #1A1A1A; border-color: #2B2B2B; }
+.br-page.dark-mode .br-rule-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+.br-page.dark-mode .br-rule-icon-box { background: rgba(196,84,26,0.15); }
+.br-page.dark-mode .br-rule-name { color: #F9FAFB; }
+.br-page.dark-mode .br-rule-desc { color: #98A2B3; }
+.br-page.dark-mode .br-rule-menu { color: #98A2B3; }
+.br-page.dark-mode .br-rule-menu:hover { background: #2B2B2B; color: #F9FAFB; }
+
+/* ===== Responsive ===== */
+@media (max-width: 992px) {
+  .br-main { margin-left: 0; }
+  .br-content { padding: 16px 20px; }
+  .br-page-header { flex-direction: column; }
+  .br-add-btn { align-self: flex-start; }
+}
+@media (max-width: 768px) {
+  .br-content { padding: 16px; }
+  .br-page-header h1 { font-size: 22px; }
+  .br-rule-card { padding: 16px; }
+}
