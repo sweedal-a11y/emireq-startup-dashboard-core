@@ -19,9 +19,6 @@ LABEL org.opencontainers.image.description="Startup dashboard for Google Cloud R
 # Remove default nginx config
 RUN rm /etc/nginx/conf.d/default.conf
 
-# Create non-root user for security
-RUN addgroup -g 101 -S nginx && adduser -S -D -H -u 101 -h /var/cache/nginx -s /sbin/nologin -G nginx -g nginx nginx
-
 # Configure nginx to log to stdout/stderr (Cloud Run requirement)
 RUN ln -sf /dev/stdout /var/log/nginx/access.log && \
     ln -sf /dev/stderr /var/log/nginx/error.log
