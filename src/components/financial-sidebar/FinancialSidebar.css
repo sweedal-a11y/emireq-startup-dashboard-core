@@ -72,6 +72,7 @@
   display: flex;
   flex-direction: column;
   gap: 1px;
+  overflow-y: auto;
 }
 
 .financial-nav-item {

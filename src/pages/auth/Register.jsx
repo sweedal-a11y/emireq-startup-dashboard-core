@@ -107,18 +107,29 @@ const Register = () => {
       password: formData.password,
       password_confirmation: formData.confirmPassword,
     };
-    const response = await registerStartup(STARTUP_REGISTER, payload);
-    console.log(response);
 
-    if (response.ok) {
+    try {
+      const response = await registerStartup(STARTUP_REGISTER, payload);
+      console.log(response);
+
+      if (response && response.ok) {
+        sessionStorage.setItem("token", response.token);
+        sessionStorage.setItem("user", JSON.stringify(response.user));
+        navigate("/onboarding/step1");
+      } else {
+        const error = response?.errors;
+        if (error) {
+          const firstKey = Object.keys(error)[0];
+          setGeneralError(Array.isArray(error[firstKey]) ? error[firstKey][0] : error[firstKey]);
+        } else {
+          setGeneralError(response?.message || "Registration failed. Please try again.");
+        }
+      }
+    } catch (err) {
+      console.error("Registration error:", err);
+      setGeneralError("Something went wrong. Please try again.");
+    } finally {
       setIsLoading(false);
-      sessionStorage.setItem("token", response.token);
-      sessionStorage.setItem("user", JSON.stringify(response.user));
-      navigate("/onboarding/step1");
-    } else {
-      setIsLoading(false);
-      const error = response.errors;
-      error && setGeneralError(error.username[0]);
     }
   };
 

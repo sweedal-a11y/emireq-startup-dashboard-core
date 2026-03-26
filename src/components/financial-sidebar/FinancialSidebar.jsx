@@ -11,6 +11,35 @@ const BANKING_SUB_ITEMS = [
   { id: "upload-statements", label: "Upload Statements", path: "/financial-core/upload-statements" },
 ];
 
+const EXPENSES_SUB_ITEMS = [
+  { id: "employee-expenses", label: "Employee Expenses", path: "/financial-core/employee-expenses" },
+  { id: "reimbursements", label: "Reimbursements", path: "/financial-core/reimbursements" },
+  { id: "receipts", label: "Receipts", path: "/financial-core/receipts" },
+  { id: "approvals", label: "Approvals", path: "/financial-core/approvals" },
+  { id: "employees", label: "Employees", path: "/financial-core/employees" },
+  { id: "salary-structure", label: "Salary Structure", path: "/financial-core/salary-structure" },
+  { id: "payroll-runs", label: "Payroll Runs", path: "/financial-core/payroll-runs" },
+  { id: "payroll-reports", label: "Payroll Reports", path: "/financial-core/payroll-reports" },
+];
+
+const REPORTS_SUB_ITEMS = [
+  { id: "profit-loss", label: "Profit & Loss", path: "/financial-core/profit-loss" },
+  { id: "balance-sheet", label: "Balance Sheet", path: "/financial-core/balance-sheet" },
+  { id: "cash-flow", label: "Cash Flow", path: "/financial-core/cash-flow" },
+  { id: "trial-balance", label: "Trial Balance", path: "/financial-core/trial-balance" },
+  { id: "audit-trail", label: "Audit Trail", path: "/financial-core/audit-trail" },
+  { id: "financial-insights", label: "Financial Insights (AI)", path: "/financial-core/financial-insights" },
+];
+
+const SETUP_SUB_ITEMS = [
+  { id: "company-profile", label: "Company Profile", path: "/financial-core/company-profile" },
+  { id: "chart-of-accounts", label: "Chart of Accounts", path: "/financial-core/chart-of-accounts" },
+  { id: "tax-settings", label: "Tax Settings", path: "/financial-core/tax-settings" },
+  { id: "opening-balance", label: "Opening Balance", path: "/financial-core/opening-balance" },
+  { id: "roles-permissions", label: "Roles & Permissions", path: "/financial-core/roles-permissions" },
+  { id: "integration", label: "Integration", path: "/financial-core/integration" },
+];
+
 const ROUTE_MAP = {
   dashboard: "/financial-core",
   transactions: "/financial-core/transactions",
@@ -23,7 +52,13 @@ export default function FinancialSidebar({ onLogout, isDarkMode, activePage = "d
   const location = useLocation();
 
   const isBankingPath = BANKING_SUB_ITEMS.some((s) => location.pathname === s.path);
+  const isExpensesPath = EXPENSES_SUB_ITEMS.some((s) => location.pathname === s.path);
+  const isReportsPath = REPORTS_SUB_ITEMS.some((s) => location.pathname === s.path);
+  const isSetupPath = SETUP_SUB_ITEMS.some((s) => location.pathname === s.path);
   const [bankingOpen, setBankingOpen] = useState(isBankingPath);
+  const [expensesOpen, setExpensesOpen] = useState(isExpensesPath);
+  const [reportsOpen, setReportsOpen] = useState(isReportsPath);
+  const [setupOpen, setSetupOpen] = useState(isSetupPath);
   const [activeItem, setActiveItem] = useState(activePage);
 
   React.useEffect(() => {
@@ -32,6 +67,9 @@ export default function FinancialSidebar({ onLogout, isDarkMode, activePage = "d
 
   React.useEffect(() => {
     if (isBankingPath) setBankingOpen(true);
+    if (isExpensesPath) setExpensesOpen(true);
+    if (isReportsPath) setReportsOpen(true);
+    if (isSetupPath) setSetupOpen(true);
   }, [location.pathname]);
 
   const handleBackToMain = () => navigate("/overview");
@@ -39,6 +77,18 @@ export default function FinancialSidebar({ onLogout, isDarkMode, activePage = "d
   const handleItemClick = (itemId) => {
     if (itemId === "banking") {
       setBankingOpen((prev) => !prev);
+      return;
+    }
+    if (itemId === "expenses") {
+      setExpensesOpen((prev) => !prev);
+      return;
+    }
+    if (itemId === "reports") {
+      setReportsOpen((prev) => !prev);
+      return;
+    }
+    if (itemId === "setup") {
+      setSetupOpen((prev) => !prev);
       return;
     }
     setActiveItem(itemId);
@@ -55,9 +105,9 @@ export default function FinancialSidebar({ onLogout, isDarkMode, activePage = "d
     { id: "sales", label: "Sales", icon: "sales" },
     { id: "purchases", label: "Purchases", icon: "purchases" },
     { id: "banking", label: "Banking & Wallets", icon: "banking", hasDropdown: true },
-    { id: "expenses", label: "Expenses & Payroll", icon: "expenses" },
-    { id: "reports", label: "Reports & Insights", icon: "reports" },
-    { id: "setup", label: "Setup & Control", icon: "setup" },
+    { id: "expenses", label: "Expenses & Payroll", icon: "expenses", hasDropdown: true },
+    { id: "reports", label: "Reports & Insights", icon: "reports", hasDropdown: true },
+    { id: "setup", label: "Setup & Control", icon: "setup", hasDropdown: true },
     { id: "ai", label: "AI & Automation", icon: "ai" },
     { id: "support", label: "Support", icon: "support" },
   ];
@@ -180,6 +230,18 @@ export default function FinancialSidebar({ onLogout, isDarkMode, activePage = "d
                   ? isBankingPath || bankingOpen
                     ? "active"
                     : ""
+                  : item.id === "expenses"
+                  ? isExpensesPath || expensesOpen
+                    ? "active"
+                    : ""
+                  : item.id === "reports"
+                  ? isReportsPath || reportsOpen
+                    ? "active"
+                    : ""
+                  : item.id === "setup"
+                  ? isSetupPath || setupOpen
+                    ? "active"
+                    : ""
                   : activeItem === item.id
                   ? "active"
                   : ""
@@ -190,7 +252,16 @@ export default function FinancialSidebar({ onLogout, isDarkMode, activePage = "d
               <span className="nav-item-label">{item.label}</span>
               {item.hasDropdown && (
                 <span className="nav-item-chevron">
-                  {bankingOpen ? <FiChevronUp size={14} /> : <FiChevronDown size={14} />}
+                  {item.id === "banking"
+                    ? (bankingOpen ? <FiChevronUp size={14} /> : <FiChevronDown size={14} />)
+                    : item.id === "expenses"
+                    ? (expensesOpen ? <FiChevronUp size={14} /> : <FiChevronDown size={14} />)
+                    : item.id === "reports"
+                    ? (reportsOpen ? <FiChevronUp size={14} /> : <FiChevronDown size={14} />)
+                    : item.id === "setup"
+                    ? (setupOpen ? <FiChevronUp size={14} /> : <FiChevronDown size={14} />)
+                    : <FiChevronDown size={14} />
+                  }
                 </span>
               )}
             </button>
@@ -199,6 +270,51 @@ export default function FinancialSidebar({ onLogout, isDarkMode, activePage = "d
             {item.id === "banking" && bankingOpen && (
               <div className="banking-submenu">
                 {BANKING_SUB_ITEMS.map((sub) => (
+                  <button
+                    key={sub.id}
+                    className={`banking-sub-item ${location.pathname === sub.path ? "active" : ""}`}
+                    onClick={() => handleSubItemClick(sub.path)}
+                  >
+                    {sub.label}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {/* Expenses & Payroll sub-menu */}
+            {item.id === "expenses" && expensesOpen && (
+              <div className="banking-submenu">
+                {EXPENSES_SUB_ITEMS.map((sub) => (
+                  <button
+                    key={sub.id}
+                    className={`banking-sub-item ${location.pathname === sub.path ? "active" : ""}`}
+                    onClick={() => handleSubItemClick(sub.path)}
+                  >
+                    {sub.label}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {/* Reports & Insights sub-menu */}
+            {item.id === "reports" && reportsOpen && (
+              <div className="banking-submenu">
+                {REPORTS_SUB_ITEMS.map((sub) => (
+                  <button
+                    key={sub.id}
+                    className={`banking-sub-item ${location.pathname === sub.path ? "active" : ""}`}
+                    onClick={() => handleSubItemClick(sub.path)}
+                  >
+                    {sub.label}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {/* Setup & Control sub-menu */}
+            {item.id === "setup" && setupOpen && (
+              <div className="banking-submenu">
+                {SETUP_SUB_ITEMS.map((sub) => (
                   <button
                     key={sub.id}
                     className={`banking-sub-item ${location.pathname === sub.path ? "active" : ""}`}

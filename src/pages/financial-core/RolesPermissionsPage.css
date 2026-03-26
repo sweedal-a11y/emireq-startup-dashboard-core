@@ -1,0 +1,372 @@
+﻿/* ===== Container ===== */
+.rp-container {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 20px 40px;
+}
+
+/* ===== Page Header ===== */
+.rp-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+.rp-page-header-left h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 4px 0;
+}
+.rp-page-header-left p {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+}
+.rp-btn-add {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  background: #1e293b;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.rp-btn-add:hover {
+  background: #334155;
+}
+
+/* ===== Summary Cards ===== */
+.rp-summary-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.rp-summary-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 18px 20px;
+  cursor: pointer;
+  transition: box-shadow 0.15s;
+}
+.rp-summary-card:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.rp-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.rp-card-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.rp-card-icon {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.rp-card-icon.blue { background: #ede9fe; color: #8b5cf6; }
+.rp-card-icon.yellow { background: #fef3c7; color: #f59e0b; }
+.rp-card-icon.green { background: #dcfce7; color: #22c55e; }
+.rp-card-icon.orange { background: #ffedd5; color: #f97316; }
+.rp-card-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 2px;
+}
+.rp-card-sub {
+  font-size: 12px;
+  color: #64748b;
+  margin: 0;
+}
+.rp-card-sub.green { color: #22c55e; }
+.rp-card-sub.orange { color: #f59e0b; }
+
+/* ===== Table Wrapper ===== */
+.rp-table-wrapper {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 24px;
+}
+
+/* ===== Toolbar ===== */
+.rp-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.rp-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.rp-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.rp-filter-select {
+  padding: 0 14px;
+  height: 38px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #1e293b;
+  background: #fff;
+  cursor: pointer;
+  outline: none;
+}
+.rp-btn-outline {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+  color: #374151;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.rp-btn-outline:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+}
+.rp-btn-create {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #3b82f6;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.rp-btn-create:hover {
+  background: #2563eb;
+}
+
+/* ===== Table ===== */
+.rp-table-border {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.rp-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.rp-table thead th {
+  text-align: left;
+  padding: 14px 20px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #64748b;
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+  white-space: nowrap;
+}
+.rp-table tbody tr {
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.rp-table tbody tr:hover {
+  background: #fafbfc;
+}
+.rp-table tbody td {
+  padding: 18px 20px;
+  font-size: 13px;
+  color: #334155;
+  border-bottom: 1px solid #e5e7eb;
+  vertical-align: middle;
+}
+.rp-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Role name + code */
+.rp-role-name {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: #1e293b;
+}
+.rp-role-code {
+  display: block;
+  font-size: 11px;
+  color: #94a3b8;
+  margin-top: 2px;
+  font-family: monospace;
+}
+
+/* Users cell */
+.rp-users-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.rp-users-icon {
+  color: #94a3b8;
+}
+
+/* Permission badges */
+.rp-perm-badge {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 14px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.rp-perm-badge.full { background: #ecfdf5; color: #10b981; }
+.rp-perm-badge.readwrite { background: #eff6ff; color: #3b82f6; }
+.rp-perm-badge.limited { background: #fef2f2; color: #ef4444; }
+.rp-perm-badge.read { background: #f1f5f9; color: #64748b; }
+.rp-perm-badge.custom { background: #fff7ed; color: #f59e0b; }
+
+/* Status */
+.rp-status {
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+.rp-status.active { color: #22c55e; }
+.rp-status.inactive { color: #94a3b8; }
+
+/* Actions */
+.rp-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.rp-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+}
+.rp-action-btn:hover {
+  background: #f1f5f9;
+  color: #334155;
+}
+.rp-action-btn.delete:hover {
+  background: #fef2f2;
+  color: #ef4444;
+}
+
+/* ===== Footer ===== */
+.rp-footer {
+  background: #f9fafb;
+  margin: 20px -24px -24px -24px;
+  padding: 16px 20px;
+  font-size: 13px;
+  color: #94a3b8;
+  text-align: center;
+  font-style: italic;
+  border-radius: 0 0 14px 14px;
+}
+
+/* ===== DARK MODE ===== */
+.financial-core-page.dark-mode .rp-page-header-left h1 { color: #f0f0f0; }
+.financial-core-page.dark-mode .rp-page-header-left p { color: #8b92a9; }
+.financial-core-page.dark-mode .rp-btn-add { background: #6366f1; }
+.financial-core-page.dark-mode .rp-btn-add:hover { background: #818cf8; }
+
+.financial-core-page.dark-mode .rp-summary-card {
+  background: #1c1e2a;
+  border-color: #2e3048;
+}
+.financial-core-page.dark-mode .rp-summary-card:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+.financial-core-page.dark-mode .rp-card-label { color: #8b92a9; }
+.financial-core-page.dark-mode .rp-card-value { color: #f0f0f0; }
+.financial-core-page.dark-mode .rp-card-sub { color: #8b92a9; }
+
+.financial-core-page.dark-mode .rp-table-wrapper {
+  background: #1c1e2a;
+  border-color: #2e3048;
+}
+.financial-core-page.dark-mode .rp-filter-select,
+.financial-core-page.dark-mode .rp-btn-outline {
+  background: #242636;
+  border-color: #2e3048;
+  color: #f0f0f0;
+}
+.financial-core-page.dark-mode .rp-btn-create {
+  background: #6366f1;
+}
+.financial-core-page.dark-mode .rp-table-border { border-color: #2e3048; }
+.financial-core-page.dark-mode .rp-table thead th {
+  background: #242636;
+  color: #8b92a9;
+  border-color: #2e3048;
+}
+.financial-core-page.dark-mode .rp-table tbody td {
+  color: #c8cdd8;
+  border-color: #2e3048;
+}
+.financial-core-page.dark-mode .rp-table tbody tr:hover { background: #242636; }
+.financial-core-page.dark-mode .rp-role-name { color: #f0f0f0; }
+.financial-core-page.dark-mode .rp-role-code { color: #8b92a9; }
+.financial-core-page.dark-mode .rp-users-icon { color: #8b92a9; }
+.financial-core-page.dark-mode .rp-status.active { color: #34d399; }
+.financial-core-page.dark-mode .rp-status.inactive { color: #8b92a9; }
+.financial-core-page.dark-mode .rp-action-btn { color: #8b92a9; }
+.financial-core-page.dark-mode .rp-action-btn:hover { background: #242636; color: #f0f0f0; }
+.financial-core-page.dark-mode .rp-action-btn.delete:hover { background: #3b1a1a; color: #ef4444; }
+.financial-core-page.dark-mode .rp-footer {
+  background: #242636;
+  color: #8b92a9;
+}
+.financial-core-page.dark-mode .rp-card-icon.blue { background: rgba(139, 92, 246, 0.15); }
+.financial-core-page.dark-mode .rp-card-icon.yellow { background: rgba(245, 158, 11, 0.15); }
+.financial-core-page.dark-mode .rp-card-icon.green { background: rgba(34, 197, 94, 0.15); }
+.financial-core-page.dark-mode .rp-card-icon.orange { background: rgba(249, 115, 22, 0.15); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+  .rp-summary-cards { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .rp-container { padding: 16px 20px; }
+  .rp-page-header { flex-direction: column; gap: 12px; }
+  .rp-summary-cards { grid-template-columns: 1fr; }
+  .rp-toolbar { flex-direction: column; gap: 12px; align-items: stretch; }
+  .rp-toolbar-right { justify-content: flex-end; }
+  .rp-table-border { overflow-x: auto; }
+  .rp-table { min-width: 700px; }
+}

@@ -27,6 +27,26 @@ import WalletsPage from "./pages/financial-core/WalletsPage";
 import ReconciliationPage from "./pages/financial-core/ReconciliationPage";
 import BankRulesPage from "./pages/financial-core/BankRulesPage";
 import UploadStatementsPage from "./pages/financial-core/UploadStatementsPage";
+import EmployeeExpensesPage from "./pages/financial-core/EmployeeExpensesPage";
+import ReimbursementsPage from "./pages/financial-core/ReimbursementsPage";
+import ReceiptsPage from "./pages/financial-core/ReceiptsPage";
+import ApprovalsPage from "./pages/financial-core/ApprovalsPage";
+import EmployeesPage from "./pages/financial-core/EmployeesPage";
+import SalaryStructurePage from "./pages/financial-core/SalaryStructurePage";
+import PayrollRunsPage from "./pages/financial-core/PayrollRunsPage";
+import PayrollReportsPage from "./pages/financial-core/PayrollReportsPage";
+import ProfitLossPage from "./pages/financial-core/ProfitLossPage";
+import BalanceSheetPage from "./pages/financial-core/BalanceSheetPage";
+import CashFlowPage from "./pages/financial-core/CashFlowPage";
+import TrialBalancePage from "./pages/financial-core/TrialBalancePage";
+import AuditTrailPage from "./pages/financial-core/AuditTrailPage";
+import FinancialInsightsPage from "./pages/financial-core/FinancialInsightsPage";
+import CompanyProfilePage from "./pages/financial-core/CompanyProfilePage";
+import ChartOfAccountsPage from "./pages/financial-core/ChartOfAccountsPage";
+import TaxSettingsPage from "./pages/financial-core/TaxSettingsPage";
+import OpeningBalancePage from "./pages/financial-core/OpeningBalancePage";
+import RolesPermissionsPage from "./pages/financial-core/RolesPermissionsPage";
+import IntegrationPage from "./pages/financial-core/IntegrationPage";
 import MessagesPage from "./pages/messages/MessagesPage";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
@@ -220,6 +240,26 @@ function AppContent() {
           <Route path="/financial-core/reconciliation" element={<ReconciliationPage />} />
           <Route path="/financial-core/bank-rules" element={<BankRulesPage />} />
           <Route path="/financial-core/upload-statements" element={<UploadStatementsPage />} />
+          <Route path="/financial-core/employee-expenses" element={<EmployeeExpensesPage />} />
+          <Route path="/financial-core/reimbursements" element={<ReimbursementsPage />} />
+          <Route path="/financial-core/receipts" element={<ReceiptsPage />} />
+          <Route path="/financial-core/approvals" element={<ApprovalsPage />} />
+          <Route path="/financial-core/employees" element={<EmployeesPage />} />
+          <Route path="/financial-core/salary-structure" element={<SalaryStructurePage />} />
+          <Route path="/financial-core/payroll-runs" element={<PayrollRunsPage />} />
+          <Route path="/financial-core/payroll-reports" element={<PayrollReportsPage />} />
+          <Route path="/financial-core/profit-loss" element={<ProfitLossPage />} />
+          <Route path="/financial-core/balance-sheet" element={<BalanceSheetPage />} />
+          <Route path="/financial-core/cash-flow" element={<CashFlowPage />} />
+          <Route path="/financial-core/trial-balance" element={<TrialBalancePage />} />
+          <Route path="/financial-core/audit-trail" element={<AuditTrailPage />} />
+          <Route path="/financial-core/financial-insights" element={<FinancialInsightsPage />} />
+          <Route path="/financial-core/company-profile" element={<CompanyProfilePage />} />
+          <Route path="/financial-core/chart-of-accounts" element={<ChartOfAccountsPage />} />
+          <Route path="/financial-core/tax-settings" element={<TaxSettingsPage />} />
+          <Route path="/financial-core/opening-balance" element={<OpeningBalancePage />} />
+          <Route path="/financial-core/roles-permissions" element={<RolesPermissionsPage />} />
+          <Route path="/financial-core/integration" element={<IntegrationPage />} />
           <Route
             path="/financial-core/invoices/:invoiceId"
             element={<InvoiceDetailView />}
